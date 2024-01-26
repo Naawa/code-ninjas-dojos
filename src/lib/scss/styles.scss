@@ -1,0 +1,64 @@
+@use 'typeface';
+@use 'responsivity';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.4s;
+}
+
+html {
+    body {
+        line-height: 1.2;
+        -webkit-font-smoothing: antialiased;
+
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+        
+        input, button, textarea, select {
+            font: inherit;
+            padding: 1em;
+            min-width: 250px;
+        }
+        
+        p, h1, h2, h3, h4, h5, h6 {
+            overflow-wrap: break-word;
+            background-color: transparent;
+        }
+        
+        #root, #__next {
+            isolation: isolate;
+        }
+    }
+}
+
+grammarly-desktop-integration {
+    display: none;
+}
+
+::selection {
+    background-color: rgb(219, 242, 255);
+    color: rgb(37, 150, 255);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+button {
+    padding: 1em 3em;
+    border: none;
+    border-radius: 0.5em;
+}
+
+section, form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding: 4em 1em;
+}
