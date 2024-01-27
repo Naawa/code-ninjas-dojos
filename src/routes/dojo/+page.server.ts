@@ -5,4 +5,5 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     if(!session) {
         redirect(302, "/")
     }
+    return {}
 };

@@ -6,12 +6,12 @@ export const load = async ({ locals: { supabase, getSession } }) => {
         redirect(302, "/")
     }
 
-    async function getData() {
+    async function getDashboardData() {
         const { data } = await supabase.from("admins").select().eq('id', (await supabase.auth.getUser()).data.user?.id);
         return data;
     }
 
     return {
-        query: await getData(),
+        adminDetails: await getDashboardData(),
     }
 };

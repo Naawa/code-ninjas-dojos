@@ -1,20 +1,23 @@
 @font-face {
-  font-family: "Azo Sans";
+  font-family: "Azo Sans Black";
   src: url("../../../fonts/AzoSans-Black.otf");
 }
 
-body {
-  font-family: 'Azo Sans';
-  font-weight: 700;
-  color: rgb(42, 42, 42);
+@font-face {
+  font-family: "Azo Sans Medium";
+  src: url("../../../fonts/AzoSans-Medium.otf");
+}
+
+body, input {
+  font-family: 'Azo Sans Medium';
+  color: rgb(247, 247, 247);
 }
 
 button, h1, h2, h3, h4, h5, p {
-  font-family: 'Azo Sans';
+  font-family: 'Azo Sans Black';
   font-weight: 800;
   transform: translateY(10%);
   text-align: center;
-  color: rgb(42, 42, 42);
 }
 
 html {font-size: 100%;} /* 16px */

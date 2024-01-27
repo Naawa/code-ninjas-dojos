@@ -6,12 +6,19 @@
     margin: 0;
     padding: 0;
     transition: all 0.4s;
+    outline: none;
 }
 
 html {
+    background-color: #1c3941;
+    background-image: linear-gradient(62deg, #1c163f 0%, #2d285e 100%);
+    background-size: contain;
+    background-repeat: no-repeat;
+
     body {
         line-height: 1.2;
         -webkit-font-smoothing: antialiased;
+
 
         img, picture, video, canvas, svg {
             display: block;
@@ -19,9 +26,10 @@ html {
         }
         
         input, button, textarea, select {
-            font: inherit;
             padding: 1em;
-            min-width: 250px;
+            width: 70dvw;
+            min-width: 240px;
+            min-height: 48px;
         }
         
         p, h1, h2, h3, h4, h5, h6 {
@@ -48,12 +56,10 @@ grammarly-desktop-integration {
     display: none;
 }
 
-button {
-    padding: 1em 3em;
-    border: none;
-    border-radius: 0.5em;
+::placeholder {
+    color: rgb(160, 160, 160);
+    opacity: 1; /* Firefox */
 }
-
 section, form {
     display: flex;
     justify-content: center;
@@ -61,4 +67,14 @@ section, form {
     align-items: center;
     gap: 2em;
     padding: 4em 1em;
+}
+
+button {
+    border: none;
+    border-radius: 0.5em;
+}
+input {
+    border: none;
+    border-bottom: solid 2px rgba(247, 247, 247, 0.637);
+    background-color: transparent;
 }
