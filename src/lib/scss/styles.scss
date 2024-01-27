@@ -10,8 +10,6 @@
 }
 
 html {
-    background-color: #1c3941;
-    background-image: linear-gradient(62deg, #1c163f 0%, #2d285e 100%);
     background-size: contain;
     background-repeat: no-repeat;
 
@@ -27,7 +25,7 @@ html {
         
         input, button, textarea, select {
             padding: 1em;
-            width: 70dvw;
+            width: 60dvw;
             min-width: 240px;
             min-height: 48px;
         }
@@ -57,8 +55,8 @@ grammarly-desktop-integration {
 }
 
 ::placeholder {
-    color: rgb(160, 160, 160);
-    opacity: 1; /* Firefox */
+    color: rgb(112, 112, 112);
+    opacity: 1;
 }
 section, form {
     display: flex;
@@ -66,15 +64,27 @@ section, form {
     flex-direction: column;
     align-items: center;
     gap: 2em;
-    padding: 4em 1em;
+    padding: 4em 1em 8em;
+}
+
+section {
+    min-height: 100dvh;
 }
 
 button {
     border: none;
     border-radius: 0.5em;
+    background-color: black;
+    color: white;
+    border: solid 0.25em black;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
 }
 input {
     border: none;
-    border-bottom: solid 2px rgba(247, 247, 247, 0.637);
+    border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
 }

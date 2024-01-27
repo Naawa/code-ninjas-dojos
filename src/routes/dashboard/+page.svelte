@@ -17,13 +17,16 @@
   <div>
     <h4>{adminDetails?.at(0).center} Dojo</h4>
     <a href="/dojo">
-      <h5>Manage Students</h5>
+      <h4>Students</h4>
+    </a>
+    <a href="/display">
+      <h4>Display</h4>
     </a>
     <a href="/sessions">
-      <h5>Manage Sessions</h5>
+      <h4>Sessions</h4>
     </a>
     <a href="/shop">
-      <h5>Manage Shop</h5>
+      <h4>Shop</h4>
     </a>
   </div>
   <button on:click="{handleSignOut}">Log Out</button>
@@ -41,16 +44,15 @@
           gap: 3em;
 
           a {
-            background-color: rgb(247, 247, 247);
-            color: rgb(0, 23, 128);
+            color: black;
             padding: 1em;
-            min-height: 150px;
-            width: 70dvw;
+            min-height: 200px;
+            width: 60dvw;
             min-width: 240px;
-            text-decoration: none;
             border-radius: 0.5em;
-            border: solid 0.5em #c1a6ce;
-            h5 {
+            border: solid 0.25em #000000;
+            text-decoration: none;
+            h4 {
               width: fit-content;
             }
           }
