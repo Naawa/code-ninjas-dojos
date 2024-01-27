@@ -21,6 +21,7 @@ export const actions = {
     if (error) {
       return fail(500, { message: 'Server error. Try again later.', success: false, email })
     }
+    
 
     redirect(302,"/dashboard");
   },

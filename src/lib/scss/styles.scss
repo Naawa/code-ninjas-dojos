@@ -74,13 +74,13 @@ section {
 button {
     border: none;
     border-radius: 0.5em;
-    background-color: black;
+    background-color: #303030;;
     color: white;
-    border: solid 0.25em black;
+    border: solid 0.1em #d5d5d5;
 
     &:hover {
         background-color: white;
-        color: black;
+        color: #303030;;
     }
 }
 input {

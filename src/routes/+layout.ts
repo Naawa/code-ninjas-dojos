@@ -24,5 +24,17 @@ export const load = async ({ fetch, data, depends }) => {
     data: { session },
   } = await supabase.auth.getSession()
 
-  return { supabase, session }
+  async function getAdmin() {
+      const { data } = await supabase.from("admins").select().eq('id', (await supabase.auth.getUser()).data.user?.id);
+      return data;
+  }
+
+  const admin = await getAdmin()
+
+  async function getStudents() {
+    const { data } = await supabase.from("students").select("*").eq('center', (admin?.at(0).center));
+    return data;
+}
+
+  return { supabase, session, admin, students: await getStudents() }
 }

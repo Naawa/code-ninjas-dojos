@@ -3,9 +3,9 @@
 	import { goto } from '$app/navigation';
 
   export let data
-  let { supabase, adminDetails } = data
-  $: ({ supabase } = data)
-
+  let { supabase, admin } = data
+  $: ({ supabase, admin } = data)
+  
   const handleSignOut = async () => {
     await supabase.auth.signOut()
     goto("/");
@@ -13,47 +13,63 @@
 </script>
 
 <section>
-  <h3>Welcome {adminDetails?.at(0).name}</h3>
-  <div>
-    <h4>{adminDetails?.at(0).center} Dojo</h4>
-    <a href="/dojo">
-      <h4>Students</h4>
-    </a>
-    <a href="/display">
-      <h4>Display</h4>
-    </a>
-    <a href="/sessions">
-      <h4>Sessions</h4>
-    </a>
-    <a href="/shop">
-      <h4>Shop</h4>
-    </a>
-  </div>
-  <button on:click="{handleSignOut}">Log Out</button>
+  <h3>Welcome {admin?.at(0).name}</h3>
+  <span>
+    <h4>{admin?.at(0).center} Dojo</h4>
+    <div>
+      <a href="/students">
+        <h4>Students</h4>
+      </a>
+      <a href="/display">
+        <h4>Display</h4>
+      </a>
+      <a href="/sessions">
+        <h4>Sessions</h4>
+      </a>
+      <a href="/shop">
+        <h4>Shop</h4>
+      </a>
+    </div>
+  </span>
+  <span>
+    <button on:click="{handleSignOut}">Log Out</button>
+    <a href="support">Need help?</a>
+  </span>
 </section>
 
 
 <style lang="scss">
     section {
-        gap: 3em;
-        div {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 3em;
+        gap: 5em;
 
-          a {
-            color: black;
-            padding: 1em;
-            min-height: 200px;
-            width: 60dvw;
-            min-width: 240px;
-            border-radius: 0.5em;
-            border: solid 0.25em #000000;
-            text-decoration: none;
-            h4 {
-              width: fit-content;
+        span {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          gap: 2em;
+
+          &:last-of-type {
+            align-items: center;
+          }
+          
+          div {
+            display: flex;
+            overflow-x: scroll;
+            align-items: center;
+            gap: 3em;
+            max-width: 90dvw;
+
+            a {
+              padding: 1em;
+              min-height: 400px;
+              width: 60dvw;
+              min-width: 70%;
+              border-radius: 0.5em;
+              border: solid 0.1em #d5d5d5;
+              text-decoration: none;
+              h4 {
+                  width: fit-content;
+              }
             }
           }
         }
