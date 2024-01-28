@@ -1,5 +1,5 @@
 <section>
-    <h3>Display Work in Progress</h3>
+    <h3>Attendance Work in Progress</h3>
     <div>
         
     </div>

@@ -5,5 +5,18 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     if(!session) {
         redirect(302, "/")
     }
-    return {}
+
+    async function getAdmin() {
+        let { data: admin, error } = await supabase.from("admins").select("*").eq('id', `${session?.user.id}`).maybeSingle();
+
+        if(error) {
+            console.log(error);
+        }
+
+        return admin;
+    }
+
+    return {
+        admin: await getAdmin()
+    }
 };

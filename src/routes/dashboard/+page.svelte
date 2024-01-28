@@ -13,15 +13,15 @@
 </script>
 
 <section>
-  <h3>Welcome {admin?.at(0).name}</h3>
+  <h3>Welcome {admin?.name}</h3>
   <span>
-    <h4>{admin?.at(0).center} Dojo</h4>
+    <h4>{admin?.center} Dojo</h4>
     <div>
       <a href="/students">
         <h4>Students</h4>
       </a>
-      <a href="/display">
-        <h4>Display</h4>
+      <a href="/attendance">
+        <h4>Attendance</h4>
       </a>
       <a href="/sessions">
         <h4>Sessions</h4>

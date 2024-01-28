@@ -1,7 +1,8 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr'
 
-export const load = async ({ fetch, data, depends }) => {
+export const load: LayoutLoad = async ({ fetch, data, depends }) => {
   depends('supabase:auth')
 
   const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
@@ -22,19 +23,7 @@ export const load = async ({ fetch, data, depends }) => {
 
   const {
     data: { session },
-  } = await supabase.auth.getSession()
+  } = (await supabase.auth.getSession())
 
-  async function getAdmin() {
-      const { data } = await supabase.from("admins").select().eq('id', (await supabase.auth.getUser()).data.user?.id);
-      return data;
-  }
-
-  const admin = await getAdmin()
-
-  async function getStudents() {
-    const { data } = await supabase.from("students").select("*").eq('center', (admin?.at(0).center));
-    return data;
-}
-
-  return { supabase, session, admin, students: await getStudents() }
+  return { supabase, session }
 }

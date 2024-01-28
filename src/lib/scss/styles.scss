@@ -28,6 +28,8 @@ html {
             width: 60dvw;
             min-width: 240px;
             min-height: 48px;
+            max-width: 400px;
+            text-align: center;
         }
         
         p, h1, h2, h3, h4, h5, h6 {
@@ -87,4 +89,9 @@ input {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
