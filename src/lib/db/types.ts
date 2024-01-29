@@ -30,7 +30,7 @@ export interface Database {
             foreignKeyName: "admins_center_fkey"
             columns: ["center"]
             isOneToOne: false
-            referencedRelation: "centers"
+            referencedRelation: "sessions"
             referencedColumns: ["location"]
           },
           {
@@ -42,25 +42,39 @@ export interface Database {
           }
         ]
       }
-      centers: {
+      sessions: {
         Row: {
+          center_admin: string | null
+          date: string | null
           location: string
-          sessions: Json | null
+          students: string[] | null
         }
         Insert: {
+          center_admin?: string | null
+          date?: string | null
           location: string
-          sessions?: Json | null
+          students?: string[] | null
         }
         Update: {
+          center_admin?: string | null
+          date?: string | null
           location?: string
-          sessions?: Json | null
+          students?: string[] | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "sessions_center_admin_fkey"
+            columns: ["center_admin"]
+            isOneToOne: false
+            referencedRelation: "admins"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       students: {
         Row: {
           belt: string
-          center: string | null
+          center_admin: string | null
           icons: number[] | null
           nameplates: number[] | null
           nickname: string
@@ -68,7 +82,7 @@ export interface Database {
         }
         Insert: {
           belt?: string
-          center?: string | null
+          center_admin?: string | null
           icons?: number[] | null
           nameplates?: number[] | null
           nickname: string
@@ -76,21 +90,13 @@ export interface Database {
         }
         Update: {
           belt?: string
-          center?: string | null
+          center_admin?: string | null
           icons?: number[] | null
           nameplates?: number[] | null
           nickname?: string
           points?: number
         }
-        Relationships: [
-          {
-            foreignKeyName: "students_center_fkey"
-            columns: ["center"]
-            isOneToOne: false
-            referencedRelation: "centers"
-            referencedColumns: ["location"]
-          }
-        ]
+        Relationships: []
       }
     }
     Views: {

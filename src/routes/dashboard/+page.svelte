@@ -13,15 +13,14 @@
 </script>
 
 <section>
-  <h3>Welcome {admin?.name}</h3>
+  <h3>{admin?.center} Dojo</h3>
   <span>
-    <h4>{admin?.center} Dojo</h4>
     <div>
+      <a href="/timer">
+        <h4>Timer</h4>
+      </a>
       <a href="/students">
         <h4>Students</h4>
-      </a>
-      <a href="/attendance">
-        <h4>Attendance</h4>
       </a>
       <a href="/sessions">
         <h4>Sessions</h4>
@@ -40,33 +39,38 @@
 
 <style lang="scss">
     section {
-        gap: 5em;
+        gap: 4em;
+        text-align: center;
 
         span {
           display: flex;
           justify-content: center;
           flex-direction: column;
-          gap: 2em;
+          align-items: center;
+          gap: 3em;
 
           &:last-of-type {
             align-items: center;
+            gap: 2em;
           }
           
           div {
             display: flex;
-            overflow-x: scroll;
+            flex-wrap: wrap;
             align-items: center;
+            justify-content: center;
             gap: 3em;
-            max-width: 90dvw;
+            width: 90dvw;
 
             a {
               padding: 1em;
-              min-height: 400px;
-              width: 60dvw;
-              min-width: 70%;
+              min-height: 150px;
+              width: 100%;
+              max-width: 300px;
               border-radius: 0.5em;
               border: solid 0.1em #d5d5d5;
               text-decoration: none;
+
               h4 {
                   width: fit-content;
               }

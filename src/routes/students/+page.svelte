@@ -5,18 +5,21 @@
 </script>
 
 <section>
-    <h3>Class List Work in Progress</h3>
+    <h3>Students</h3>
     <span>
         <a href="/students/add" class="div">
-            <span></span>
-            <span></span>
+            <div>
+                <span></span>
+                <span></span>
+            </div>
+            <h4>Add</h4>
         </a>
         {#if students}
             {#each students as student} 
-                <div>
+                <a href="/students/{student.nickname}">
                     <h4>{student.nickname}</h4>
-                    <a href="/students/{student.nickname}">View Profile</a>
-                </div>
+                    <p>{student.points} Points</p>
+                </a>
             {/each}
         {/if}
     </span>
@@ -31,7 +34,7 @@
             padding: 2em;
             flex-wrap: wrap;
             
-            div,.div {
+            a {
                 border-radius: 0.5em;
                 border: solid 0.1em #d5d5d5;
                 display: flex;
@@ -42,16 +45,24 @@
                 min-height: 100px;
                 min-width: 125px;
                 justify-content: center;
+                text-decoration: none;
 
-                span {
-                    width: 1em;
-                    border: solid 1px #d5d5d5;
-                    padding: 0;
-                    gap: 0;
-                    position: absolute;
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.5em;
 
-                    &:last-of-type {
-                        rotate: 90deg;
+                    span {
+                        width: 1em;
+                        border: solid 1px #d5d5d5;
+                        padding: 0;
+                        gap: 0;
+                        position: absolute;
+
+                        &:last-of-type {
+                            rotate: 90deg;
+                        }
                     }
                 }
             }
