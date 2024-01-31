@@ -77,13 +77,15 @@
                 <div>
                     <label>
                         <strong><u>Students Attending</u></strong>
-                        {#each attendance as attendee}
-                            <span id="atdn-container">
-                                <p>{attendee}</p>
-                                <button id="rmv-student" on:click={() => remove(attendee)}>
-                                </button>
-                            </span>
-                        {/each}
+                        {#if attendance}
+                            {#each attendance as attendee}
+                                <span id="atdn-container">
+                                    <p>{attendee}</p>
+                                    <button id="rmv-student" on:click={() => remove(attendee)}>
+                                    </button>
+                                </span>
+                            {/each}
+                        {/if}
                     </label>
                 </div>
             </span>

@@ -13,12 +13,15 @@
 <span>
     {#if attendance}
         <p>{attendance.length} Students</p>
+        {:else}
+        <p>0 Students</p>
+    {/if}
         <span>
             <strong>{format(start)}</strong>
             <p>-</p>
             <strong>{format(end)}</strong>
         </span>
-    {/if}
+    
 </span>
 
 <style lang="scss">

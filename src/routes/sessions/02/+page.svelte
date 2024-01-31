@@ -3,7 +3,7 @@
     export let data;
     const { supabase, session, students, attendanceInfo} = data;
 
-    let attendance: any = attendanceInfo?.second_hour_attendance;
+    let attendance: any = attendanceInfo?.second_hour_attendance || [];
 
     let file: string; 
     let studentNames: string[] = [];
@@ -39,7 +39,7 @@
     async function updateHour(attendance: string[]) {
         const { data, error } = await supabase
         .from('sessions')
-        .update({ first_hour_attendance: `{${attendance}}` })
+        .update({ second_hour_attendance: `{${attendance}}` })
         .eq('center_admin', `${session?.user.id}`)
         .select()
         goto("/sessions");
@@ -77,13 +77,15 @@
                 <div>
                     <label>
                         <strong><u>Students Attending</u></strong>
-                        {#each attendance as attendee}
-                            <span id="atdn-container">
-                                <p>{attendee}</p>
-                                <button id="rmv-student" on:click={() => remove(attendee)}>
-                                </button>
-                            </span>
-                        {/each}
+                        {#if attendance}
+                            {#each attendance as attendee}
+                                <span id="atdn-container">
+                                    <p>{attendee}</p>
+                                    <button id="rmv-student" on:click={() => remove(attendee)}>
+                                    </button>
+                                </span>
+                            {/each}
+                        {/if}
                     </label>
                 </div>
             </span>

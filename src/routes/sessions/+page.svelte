@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { invalidateAll } from "$app/navigation";
 	import Session from "$lib/components/Session.svelte";
     export let data;
+    invalidateAll()
 
     const { attendanceInfo } = data;
     let tHour01 = new Date()
