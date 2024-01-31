@@ -5,28 +5,6 @@
     export let color: string;
     export let backgroundColor: string;
 
-    let display: any[] = [];
-    let i = 0;
-    let max = 5;
-    let ms = 5000;
-
-    function displayNinjas() {
-        display = [];
-        for(i; i < max && i < ninjas.length; i++) {
-            display.push(ninjas[i]);
-        }
-        if(max >= ninjas.length) {
-            max = 5;
-            i = 0;
-        }
-        else {
-            max += 5;
-        }
-        display = display;
-    }
-    displayNinjas();
-    //setInterval(displayNinjas, ms);
-
 </script>
 
 <style lang="scss">
@@ -90,12 +68,10 @@
 </style>
 
 <section>
-    {#key display}
-        {#each display as ninja, index}
-            <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-                <span></span>
-                <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-            </div>
-        {/each}
-    {/key}
+    {#each ninjas as ninja, index}
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
+            <span></span>
+            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
+        </div>
+    {/each}
 </section>
