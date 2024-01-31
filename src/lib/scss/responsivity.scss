@@ -1,11 +1,10 @@
 html {
+    height: 100%;
     width: 100%;
     transition: 0.5s;
-    font-size: clamp(12px, 0.9dvw, 48px);
+    font-size: clamp(12px, 0.95dvw, 48px);
 
     body {
-        height: 100%;
-        min-height: 100dvh;
         width: clamp(250px, 100dvw, 100%);
     }
 }

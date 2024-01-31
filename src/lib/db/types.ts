@@ -45,21 +45,27 @@ export interface Database {
       sessions: {
         Row: {
           center_admin: string | null
-          date: string | null
+          first_hour_attendance: string[] | null
+          fourth_hour_attendance: string[] | null
           location: string
-          students: string[] | null
+          second_hour_attendance: string[] | null
+          third_hour_attendance: string[] | null
         }
         Insert: {
           center_admin?: string | null
-          date?: string | null
+          first_hour_attendance?: string[] | null
+          fourth_hour_attendance?: string[] | null
           location: string
-          students?: string[] | null
+          second_hour_attendance?: string[] | null
+          third_hour_attendance?: string[] | null
         }
         Update: {
           center_admin?: string | null
-          date?: string | null
+          first_hour_attendance?: string[] | null
+          fourth_hour_attendance?: string[] | null
           location?: string
-          students?: string[] | null
+          second_hour_attendance?: string[] | null
+          third_hour_attendance?: string[] | null
         }
         Relationships: [
           {

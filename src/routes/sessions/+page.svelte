@@ -1,39 +1,83 @@
 <script lang="ts">
-	import AddSession from "$lib/components/AddSession.svelte";
 	import Session from "$lib/components/Session.svelte";
     export let data;
-    const { nextSession } = data
+
+    const { attendanceInfo, hours } = data;
+    const { tHour01, tHour02, tHour03, tHour04 } = hours
+	let a01 = attendanceInfo?.at(0)?.first_hour_attendance;
+	let a02 = attendanceInfo?.at(0)?.second_hour_attendance;
+	let a03 = attendanceInfo?.at(0)?.third_hour_attendance;
+	let a04 = attendanceInfo?.at(0)?.fourth_hour_attendance;
 </script>
 <section>
+    <h3>Display</h3>
+    <div>
+        <a href="/sessions/display" target="_blank">
+            <div>
+                <h4>Countdown Timer</h4>
+                <p>Open</p>
+            </div>
+        </a>
+    </div>
+    <br>
     <h3>Sessions</h3>
     <div>
-        {#if nextSession?.at(0)?.date}
-            <a href="/sessions/${nextSession}">
-                <h4>Create</h4>
-                <Session {nextSession}></Session>
-            </a>
-        {:else}
+        <a href="/sessions/01">
             <span>
-                <AddSession {data}></AddSession>
+                <h5>First Hour</h5>
+                <p>Edit Details.</p>
             </span>
-        {/if}
-        <a href="/sessions/history">
-            <h4>History</h4>
+            <Session attendance={a01} start={tHour01}></Session>
+        </a>
+        <a href="/sessions/02">
+            <span>
+                <h5>Second Hour</h5>
+                <p>Edit Details.</p>
+            </span>
+            <Session attendance={a02} start={tHour02}></Session>
+        </a>
+        <a href="/sessions/03">
+            <span>
+                <h5>Third Hour</h5>
+                <p>Edit Details.</p>
+            </span>
+            <Session attendance={a03} start={tHour03}></Session>
+        </a>
+        <a href="/sessions/04">
+            <span>
+                <h5>Fourth Hour</h5>
+                <p>Edit Details.</p>
+            </span>
+            <Session attendance={a04} start={tHour04}></Session>
         </a>
     </div>
 </section>
 
 <style lang="scss">
     section {
+        min-height: 100dvh;
         div {
             display: flex;
             justify-content: center;
             flex-direction: column;
             width: 90dvw;
-            max-width: 400px;
+            max-width: 800px;
             gap: 2em;
 
-            a, span {
+            div, span {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+
+                span {
+                    width: fit-content;
+                    gap: 0.5em;
+                }
+            }
+
+            a {
                 display: flex;
                 flex-direction: column;
                 border-radius: 0.5em;
@@ -41,9 +85,6 @@
                 padding: 1em;
                 gap: 1em;
                 text-decoration: none;
-            }
-            span {
-                padding: 0;
             }
         }
     }

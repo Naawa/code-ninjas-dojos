@@ -16,9 +16,6 @@
   <h3>{admin?.center} Dojo</h3>
   <span>
     <div>
-      <a href="/timer">
-        <h4>Timer</h4>
-      </a>
       <a href="/students">
         <h4>Students</h4>
       </a>
@@ -41,7 +38,8 @@
     section {
         gap: 4em;
         text-align: center;
-
+        min-height: 100dvh;
+  
         span {
           display: flex;
           justify-content: center;
@@ -66,7 +64,7 @@
               padding: 1em;
               min-height: 150px;
               width: 100%;
-              max-width: 300px;
+              max-width: 800px;
               border-radius: 0.5em;
               border: solid 0.1em #d5d5d5;
               text-decoration: none;

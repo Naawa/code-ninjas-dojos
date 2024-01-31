@@ -1,7 +1,7 @@
 <script lang="ts">
-    export let nextSession: any;
-
-    let start = new Date(nextSession?.at(0).date);
+    export let attendance: any;
+    export let start: Date;
+    
     let end = new Date(start);
     end.setHours(start.getHours() + 1)
 
@@ -11,12 +11,14 @@
 </script>
     
 <span>
-    <p>{nextSession?.at(0).students.length} Students</p>
-    <span>
-        <h5>{format(start)}</h5>
-        <p>-</p>
-        <h5>{format(end)}</h5>
-    </span>
+    {#if attendance}
+        <p>{attendance.length} Students</p>
+        <span>
+            <strong>{format(start)}</strong>
+            <p>-</p>
+            <strong>{format(end)}</strong>
+        </span>
+    {/if}
 </span>
 
 <style lang="scss">
@@ -25,6 +27,7 @@
         justify-content: space-between;
         gap: 1em;
         text-decoration: none;
+        align-items: center;
     }
 </style>
 
