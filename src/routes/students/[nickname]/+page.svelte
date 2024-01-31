@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation';
+
     export let data;
     const { supabase, profile } = data;
 
@@ -18,6 +20,7 @@
         if(error) {
             console.log(error);
         }
+        invalidateAll()
     }
 </script>
 

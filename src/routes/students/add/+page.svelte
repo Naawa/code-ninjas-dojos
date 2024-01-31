@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
     export let data;
     const { supabase, session } = data;
 
@@ -18,7 +20,7 @@
             },
         ])
         .select()
-        console.log(data);
+        goto("/students")
     }
 </script>
 

@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation';
+
     export let data;
     const { students } = data;
+    invalidateAll()
     
 </script>
 
