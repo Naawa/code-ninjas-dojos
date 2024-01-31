@@ -4,10 +4,10 @@
 
     const { attendanceInfo, hours } = data;
     const { tHour01, tHour02, tHour03, tHour04 } = hours
-	let a01 = attendanceInfo?.at(0)?.first_hour_attendance;
-	let a02 = attendanceInfo?.at(0)?.second_hour_attendance;
-	let a03 = attendanceInfo?.at(0)?.third_hour_attendance;
-	let a04 = attendanceInfo?.at(0)?.fourth_hour_attendance;
+	let a01 = attendanceInfo?.first_hour_attendance;
+	let a02 = attendanceInfo?.second_hour_attendance;
+	let a03 = attendanceInfo?.third_hour_attendance;
+	let a04 = attendanceInfo?.fourth_hour_attendance;
 </script>
 <section>
     <h3>Display</h3>
