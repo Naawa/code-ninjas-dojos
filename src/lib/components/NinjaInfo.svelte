@@ -5,33 +5,35 @@
     export let color: string;
     export let backgroundColor: string;
 
+    
+
 </script>
 
 <style lang="scss">
     section {
-        position: relative;
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 20% 20% 20% 20% 20%;
-        place-items: center;
-        height: 10em;
-        width: 90dvw;
         padding: 0;
-        gap: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        height: 100%;
+        max-height: 150dvh;
+        width: fit-content;
 
         div {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 2em;
-            width: 16em;
+            width: 14dvw;
             padding: 1em;
             backdrop-filter: blur(40px);
             border-radius: 16px;
             background-image: url("../../../Nameplate2.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;
-
         }
 
         span {
@@ -50,19 +52,6 @@
 
         h5 {
             text-align: center;
-        }
-    }
-
-    @media (width < 1200px) {
-        section {
-            padding: 0;
-            display: grid;
-            grid-auto-flow: column;
-            grid-template-rows: 20% 20% 20% 20% 20%;
-            grid-template-columns: 1fr;
-            place-items: center;
-            height: 36em;
-            width: 16em;
         }
     }
 </style>

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { fly } from "svelte/transition";
-
     export let startTime: Date;
     let endTime = new Date(startTime);
     endTime.setHours(startTime.getHours() + 1);
@@ -13,7 +11,7 @@
 
     let countdown: any;
 
-   $: if(startTime.getTime() > now.getTime()) {
+   $: if(!(startTime.getHours() > (now.getHours() + 1))) {
         setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();
@@ -24,6 +22,7 @@
     } else {
         minute = 59;
         seconds = 59;
+        block = "Class will start soon."
     }
     
     $: if(distance <= 0) {
@@ -34,9 +33,8 @@
 
     export let backgroundColor = "#0E2937";
     export let color = "#FFCF46";
-    export let block = "Shh... Ninjas are Typing!";
+    export let block: string;
     export let shade = "#e6a800";
-
 </script>
 
 <style lang="scss">
@@ -45,16 +43,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2em;
         text-align: center;
-        padding: 2em;
+        padding: 3em;
         border-radius: 2em;
-        width: 60dvw;
-        height: 40dvh;
-
-        h2 {
-            font-size: 3vw;
-        }
+        width: 40dvw;
+        max-height: 20dvh;
 
         div {
             display: flex;
@@ -64,12 +57,8 @@
             gap: 4em;
 
 
-            h1 {
-                font-size: 6vw;
-            }
-
             p {
-                font-size: 4dvw;
+                font-size: xx-large;
                 font-weight: 800;
             }
 
@@ -85,22 +74,10 @@
             }
         }
     }
-
-    @media (width < 1200px) {
-        span {
-            width: 90%;
-            height: fit-content;
-            padding: 2em;
-
-            span {
-                padding: 0;
-            }
-        }
-    }
 </style>
 
-<span in:fly|global={{ y: 25, duration: 800, delay: 800}} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor};">
-    <h2 style="color: {color};">{block}</h2>
+<span style="background-color: {backgroundColor};">
+    <h3 style="color: {color};">{block}</h3>
     <div>
         <span>
             <h1 style="color: {color};">{minute}</h1>

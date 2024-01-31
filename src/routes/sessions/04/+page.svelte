@@ -123,8 +123,8 @@
                 width: 100%;
 
                 input {
-                    min-width: 10em;
-                    width: 10em;
+                    min-width: 16em;
+                    width: 16em;
                     font: inherit;
                 }
                 input[type="file"] {
@@ -142,7 +142,8 @@
         border: solid 0.1em #d5d5d5;
         padding: 1em;
         border-radius: 10px;
-        min-width: 225px;
+        min-width: 16em;
+        width: 16em;
         max-width: 400px;
         display: flex;
         flex-direction: column;

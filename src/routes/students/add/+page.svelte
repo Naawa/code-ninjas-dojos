@@ -65,8 +65,8 @@
                 width: 100%;
 
                 strong {
-                    border-bottom: solid 2px rgb(59, 59, 59);
                     padding: 1em;
+                    height: 3em;
                     width: 5em;
                 }
 

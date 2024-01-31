@@ -80,7 +80,6 @@
                 .select("*")
                 .eq('nickname', `${list[i]}`)
                 ninjas.push(ninja);
-                ninjas = ninjas;
             }
         }
     }
@@ -94,13 +93,11 @@
     section {
         height: 100dvh;
         width: 100%;
-        top: 0;
-        left: 0;
-        display: grid;
-        grid-auto-rows: 70dvh 15dvh;
-        place-items: center;
-        padding: 0;
-        background-image: url("../../../../Background.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        //background-image: url("../../../../Background.jpg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         text-align: center;
@@ -108,15 +105,6 @@
         h2 {
             color: white;
             -webkit-text-stroke: 2px black;
-        }
-    }
-    @media (width < 1200px) {
-        section {
-            padding: 6em 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
         }
     }
 </style>
@@ -134,8 +122,8 @@
     {:else if hour == 4}
         <Timer startTime={tHour04} {backgroundColor} {shade} {color} {block}></Timer>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-    {:else}
-        <h2>Come again next time.</h2>
+    {:else if hour == 0}
+        <Timer startTime={tHour04} {backgroundColor} {shade} {color} block="Class will start at 3:30 PM."></Timer>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {/if}
 </section>

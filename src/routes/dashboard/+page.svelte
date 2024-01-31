@@ -64,10 +64,13 @@
               padding: 1em;
               min-height: 150px;
               width: 100%;
-              max-width: 800px;
+              max-width: 200px;
               border-radius: 0.5em;
               border: solid 0.1em #d5d5d5;
               text-decoration: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
 
               h4 {
                   width: fit-content;
