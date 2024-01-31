@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
+	import { goto, invalidate } from "$app/navigation";
     export let data;
     const { supabase, session, students, attendanceInfo} = data;
 
@@ -42,6 +42,7 @@
         .update({ second_hour_attendance: `{${attendance}}` })
         .eq('center_admin', `${session?.user.id}`)
         .select()
+        invalidate('/sessions/display');
         goto("/sessions");
     }
 
