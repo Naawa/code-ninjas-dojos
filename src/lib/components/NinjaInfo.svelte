@@ -11,15 +11,14 @@
 
 <style lang="scss">
     section {
-        padding: 0;
+        padding: 4em 0 0;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-        height: 100%;
-        max-height: 150dvh;
+        max-height: 100%;
         width: fit-content;
 
         div {
@@ -28,6 +27,7 @@
             align-items: center;
             gap: 2em;
             width: 14dvw;
+            min-width: 16em;
             padding: 1em;
             backdrop-filter: blur(40px);
             border-radius: 16px;

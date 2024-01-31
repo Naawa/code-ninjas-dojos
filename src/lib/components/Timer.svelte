@@ -46,6 +46,7 @@
         text-align: center;
         padding: 3em;
         border-radius: 2em;
+        min-width: fit-content;
         width: 40dvw;
         max-height: 20dvh;
 
