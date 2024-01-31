@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly } from "svelte/transition";
-
+    
     export let ninjas: any;
     export let color: string;
     export let backgroundColor: string;

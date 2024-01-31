@@ -18,6 +18,7 @@
     let tHour04 = new Date()
     tHour04.setHours(18);
     tHour04.setMinutes(30);
+    
     let now;
     let ninjas: any[] = [];
     let hour: number = 0;
@@ -88,8 +89,6 @@
     let color = "#FFCF46";
     let shade = "#e6a800";
     let block = "";
-
-    $: console.log(hour, ninjas)
 </script>
 <style lang="scss">
     section {
@@ -136,7 +135,7 @@
         <Timer startTime={tHour04} {backgroundColor} {shade} {color} {block}></Timer>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else}
-        <h2>Come again tomorrow.</h2>
+        <h2>Come again next time.</h2>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {/if}
 </section>
