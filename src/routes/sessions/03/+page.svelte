@@ -42,7 +42,6 @@
         .update({ third_hour_attendance: `{${attendance}}` })
         .eq('center_admin', `${session?.user.id}`)
         .select()
-        invalidate('/sessions/display');
         goto("/sessions");
     }
 
