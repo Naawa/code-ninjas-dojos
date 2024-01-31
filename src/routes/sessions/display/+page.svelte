@@ -2,15 +2,28 @@
     import Timer from "$lib/components/Timer.svelte";
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
     export let data;
-    const { hours, attendanceInfo, supabase} = data;
+    const { attendanceInfo, supabase} = data;
 
-    const { tHour01, tHour02, tHour03, tHour04 } = hours
+    let tHour01 = new Date()
+    tHour01.setHours(15);
+    tHour01.setMinutes(30);
+    let tHour02 = new Date()
+    tHour02.setHours(16);
+    tHour02.setMinutes(30);
+
+    let tHour03 = new Date()
+    tHour03.setHours(17);
+    tHour03.setMinutes(30);
+
+    let tHour04 = new Date()
+    tHour04.setHours(18);
+    tHour04.setMinutes(30);
     let now;
     let ninjas: any[] = [];
     let hour: number = 0;
     let update;
 
-    $: if(hour == 1) {
+    $: if(hour == 1 || hour == 0) {
         if(attendanceInfo?.first_hour_attendance) {
             getNinjas(attendanceInfo?.first_hour_attendance);
         }
@@ -41,24 +54,24 @@
         if(tHour01.getTime() > now) {
             hour = 1;
         }
-        if(tHour02.getTime() > now) {
+        else if(tHour02.getTime() > now) {
             hour = 2;
             
         }
-        if(tHour03.getTime() > now) {
+        else if(tHour03.getTime() > now) {
             hour = 3;
             
         }
-        if(tHour04.getTime() > now) {
+        else if(tHour04.getTime() > now) {
             hour = 4;
         }
         else {
             hour = 0;
         }
+
     }, 1000)
 
     async function getNinjas(list: string[] | null) {
-        ninjas = [];
         if(list) {
             for(let i = 0; i < list.length; i++) {
                 let { data: ninja, error } = await supabase
@@ -66,9 +79,9 @@
                 .select("*")
                 .eq('nickname', `${list[i]}`)
                 ninjas.push(ninja);
+                ninjas = ninjas;
             }
         }
-        return ninjas;
     }
 
     let backgroundColor = "#0E2937";
@@ -76,7 +89,7 @@
     let shade = "#e6a800";
     let block = "";
 
-    console.log(hour)
+    $: console.log(hour, ninjas)
 </script>
 <style lang="scss">
     section {
@@ -112,28 +125,18 @@
 <section>
     {#if hour == 1}
         <Timer startTime={tHour01} {backgroundColor} {shade} {color} {block}></Timer>
-        {#if attendanceInfo?.first_hour_attendance}
-            <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-        {/if}
+        <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else if hour == 2}
         <Timer startTime={tHour02} {backgroundColor} {shade} {color} {block}></Timer>
-        {#if attendanceInfo?.first_hour_attendance}
-            <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-        {/if}
+        <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else if hour == 3}
         <Timer startTime={tHour03} {backgroundColor} {shade} {color} {block}></Timer>
-        {#if attendanceInfo?.first_hour_attendance}
-            <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-        {/if}
+        <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else if hour == 4}
         <Timer startTime={tHour04} {backgroundColor} {shade} {color} {block}></Timer>
-        {#if attendanceInfo?.first_hour_attendance}
-            <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-        {/if}
+        <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else}
         <h2>Come again tomorrow.</h2>
-        {#if attendanceInfo?.first_hour_attendance}
-            <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
-        {/if}
+        <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {/if}
 </section>

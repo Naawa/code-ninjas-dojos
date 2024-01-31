@@ -9,7 +9,6 @@
     let i = 0;
     let max = 5;
     let ms = 5000;
-    let repeat;
 
     function displayNinjas() {
         display = [];
@@ -26,11 +25,7 @@
         display = display;
     }
     displayNinjas();
-    repeat = setInterval(displayNinjas, ms);
-
-    if(display.length < 5) {
-        clearInterval(repeat)
-    }
+    //setInterval(displayNinjas, ms);
 
 </script>
 
