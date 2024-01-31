@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from "svelte/transition";
 
-    export let startTime;
+    export let startTime: Date;
     let endTime = new Date(startTime);
     endTime.setHours(startTime.getHours() + 1);
 
@@ -13,13 +13,18 @@
 
     let countdown: any;
 
-    setInterval(() => {
-        now = new Date();
-        distance = endTime.getTime() - now.getTime();
-        minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
-        seconds = (Math.floor((distance % (1000 * 60)) / 1000));
-        clearInterval(countdown)
-    }, 1000)
+   $: if(startTime.getTime() > now.getTime()) {
+        setInterval(() => {
+            now = new Date();
+            distance = endTime.getTime() - now.getTime();
+            minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+            seconds = (Math.floor((distance % (1000 * 60)) / 1000));
+            clearInterval(countdown)
+        }, 1000)
+    } else {
+        minute = 59;
+        seconds = 59;
+    }
     
     $: if(distance <= 0) {
         clearInterval(countdown);

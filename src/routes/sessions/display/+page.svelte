@@ -2,12 +2,12 @@
     import Timer from "$lib/components/Timer.svelte";
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
     export let data;
-    const { hours, attendanceInfo, supabase, session } = data;
+    const { hours, attendanceInfo, supabase} = data;
 
     const { tHour01, tHour02, tHour03, tHour04 } = hours
     let now;
     let ninjas: any[] = [];
-    let hour: number;
+    let hour: number = 0;
     let update;
 
     $: if(hour == 1) {
@@ -52,6 +52,9 @@
         if(tHour04.getTime() > now) {
             hour = 4;
         }
+        else {
+            hour = 0;
+        }
     }, 1000)
 
     async function getNinjas(list: string[] | null) {
@@ -72,6 +75,8 @@
     let color = "#FFCF46";
     let shade = "#e6a800";
     let block = "";
+
+    console.log(hour)
 </script>
 <style lang="scss">
     section {
