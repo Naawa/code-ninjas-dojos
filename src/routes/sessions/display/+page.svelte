@@ -79,6 +79,7 @@
 
     async function getNinjas(list: string[] | null) {
         if(list) {
+            ninjas = []
             for(let i = 0; i < list.length; i++) {
                 let { data: ninja, error } = await supabase
                 .from('students')
