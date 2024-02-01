@@ -50,8 +50,7 @@
         }
     }
 
-    update = setInterval(function() {
-        clearInterval(update);
+    $: update = setInterval(function() {
         now = new Date().getTime();
         if(tHour01.getTime() > now) {
             hour = 1;
@@ -70,6 +69,7 @@
         else {
             hour = 0;
         }
+        clearInterval(update);
 
     }, 1000)
 
