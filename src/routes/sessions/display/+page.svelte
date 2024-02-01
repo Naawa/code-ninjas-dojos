@@ -69,7 +69,7 @@
         else {
             hour = 0;
         }
-        clearInterval(update);
+        update = clearInterval(update);
 
     }, 1000)
 

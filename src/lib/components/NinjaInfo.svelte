@@ -5,8 +5,6 @@
     export let color: string;
     export let backgroundColor: string;
 
-    
-
 </script>
 
 <style lang="scss">
@@ -94,5 +92,5 @@
         </div>
     {/each}\
 
-    
+
 </section>

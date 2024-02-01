@@ -12,12 +12,12 @@
     let countdown: any;
 
    $: if(!(startTime.getHours() > (now.getHours() + 1))) {
-        setInterval(() => {
+        countdown = setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();
             minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
             seconds = (Math.floor((distance % (1000 * 60)) / 1000));
-            clearInterval(countdown)
+            countdown = clearInterval(countdown)
         }, 1000)
     } else {
         minute = 59;
@@ -26,7 +26,7 @@
     }
     
     $: if(distance <= 0) {
-        clearInterval(countdown);
+        countdown = clearInterval(countdown);
         minute = 0;
         seconds = 0;
     }
