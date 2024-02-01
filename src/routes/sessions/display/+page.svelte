@@ -22,7 +22,7 @@
     let now;
     let ninjas: any[] = [];
     let hour: number = 0;
-    let update;
+    let update: any;
 
     $: if(hour == 1 || hour == 0) {
         if(attendanceInfo?.first_hour_attendance) {
@@ -51,6 +51,7 @@
     }
 
     update = setInterval(function() {
+        clearInterval(update);
         now = new Date().getTime();
         if(tHour01.getTime() > now) {
             hour = 1;
@@ -97,15 +98,10 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        //background-image: url("../../../../Background.jpg");
+        background-image: url("../../../../Background.jpg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         text-align: center;
-
-        h2 {
-            color: white;
-            -webkit-text-stroke: 2px black;
-        }
     }
 </style>
 
