@@ -81,13 +81,14 @@
                 .select("*")
                 .eq('nickname', `${list[i]}`)
                 ninjas.push(ninja);
+                ninjas = ninjas;
             }
         }
     }
 
     let backgroundColor = "#0E2937";
-    let color = "#FFCF46";
-    let shade = "#e6a800";
+    let color = "white";
+    let shade = "lightgray";
     let block = "";
 </script>
 <style lang="scss">

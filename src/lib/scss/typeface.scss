@@ -1,13 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:500');
+@font-face {
+  font-family: "Azo Sans";
+  src: url("/fonts/AzoSans-Black.otf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Azo Sans";
+  src: url("/fonts/AzoSans-Medium.otf");
+  font-weight: 500;
+}
 
 body, p {
-  font-family: 'Poppins';
+  font-family: 'Azo Sans';
   font-weight: 500;
   color: #606060;
 }
 
 strong, a, button, h1, h2, h3, h4, h5 {
-  font-family: 'Poppins';
+  font-family: 'Azo Sans';
   font-weight: 700;
   color: #303030;
 }
