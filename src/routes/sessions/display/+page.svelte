@@ -18,6 +18,10 @@
     let tHour04 = new Date()
     tHour04.setHours(18);
     tHour04.setMinutes(30);
+
+    let tHourTest = new Date()
+    tHourTest.setHours(tHourTest.getHours());
+    tHourTest.setMinutes(30);
     
     let now;
     let ninjas: any[] = [];
@@ -120,7 +124,7 @@
         <Timer startTime={tHour04} {backgroundColor} {shade} {color} {block}></Timer>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {:else if hour == 0}
-        <Timer startTime={tHour04} {backgroundColor} {shade} {color} block="Class will start at 3:30 PM."></Timer>
+        <Timer startTime={tHourTest} {backgroundColor} {shade} {color} block=""></Timer>
         <NinjaInfo {backgroundColor} {color} {ninjas}></NinjaInfo>
     {/if}
 </section>
