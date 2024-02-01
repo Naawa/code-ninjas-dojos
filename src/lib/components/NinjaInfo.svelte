@@ -60,25 +60,5 @@
             <span></span>
             <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
         </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-            <span></span>
-            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-            <span></span>
-            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-            <span></span>
-            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-            <span></span>
-            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }} style="background-color: {backgroundColor}">
-            <span></span>
-            <h5 style="color: {color};">{ninja.at(0).nickname}</h5>
-        </div>
     {/each}
 </section>
