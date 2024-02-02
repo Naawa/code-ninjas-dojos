@@ -35,8 +35,6 @@
     export let color = "#FFCF46";
     export let block: string;
     export let shade = "#e6a800";
-
-    console.log(distance)
 </script>
 
 <style lang="scss">

@@ -7,6 +7,7 @@
     let tHour01 = new Date()
     tHour01.setHours(15);
     tHour01.setMinutes(30);
+
     let tHour02 = new Date()
     tHour02.setHours(16);
     tHour02.setMinutes(30);
@@ -28,7 +29,7 @@
     let hour: number = 0;
     let update: any;
 
-    $: if(hour == 1 || hour == 0) {
+    $: if(hour == 1) {
         if(attendanceInfo?.first_hour_attendance) {
             getNinjas(attendanceInfo?.first_hour_attendance);
         }
@@ -56,18 +57,18 @@
 
     $: update = setInterval(function() {
         now = new Date().getTime();
-        if(tHour01.getTime() > now) {
+        if(now < tHour02.getTime()) {
             hour = 1;
         }
-        else if(tHour02.getTime() > now) {
+        else if(now > tHour02.getTime() && now < tHour03.getTime()) {
             hour = 2;
             
         }
-        else if(tHour03.getTime() > now) {
+        else if(now > tHour03.getTime() && now < tHour04.getTime()) {
             hour = 3;
             
         }
-        else if(tHour04.getTime() > now) {
+        else if(now > tHour04.getTime() && now < tHour04.getTime() + 1) {
             hour = 4;
         }
         else {
