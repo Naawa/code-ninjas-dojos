@@ -13,7 +13,7 @@
         .from('students')
         .insert([
             { 
-                nickname: `${name}`,  
+                name: `${name}`,  
                 belt: `${belt}`,  
                 points: `${points}`,  
                 center_admin: `${session?.user.id}`,  
