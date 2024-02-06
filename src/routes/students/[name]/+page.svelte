@@ -15,7 +15,7 @@
     }
 
     async function savePoints(points: number) {
-        const { error } = await supabase.from('students').update({ points: `${points}` }).eq('nickname', `${profile.name}`).select()
+        const { error } = await supabase.from('students').update({ points: `${points}` }).eq('name', `${profile.name}`).select()
 
         if(error) {
             console.log(error);
