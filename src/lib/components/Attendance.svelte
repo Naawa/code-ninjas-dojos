@@ -24,7 +24,7 @@
     }
 
     function add(name: string) {
-        if(!scheduled.includes(name)) {
+        if(!scheduled.includes(name) && !attending.includes(name)) {
             scheduled.push(name);
             scheduled.sort();
             scheduled = scheduled;
@@ -88,6 +88,7 @@
         .update({ hourly: hourly })
         .eq('center_admin', `${session?.user.id}`)
         .select()
+        goto("/attendance")
     }
 
 </script>
