@@ -25,7 +25,7 @@
 </script>
 
 <section>
-    <h3>{profile?.nickname}</h3>
+    <h3>{profile?.name}</h3>
     <span>
         <div>
             <p><strong>{profile?.belt}</strong> Belt</p>
