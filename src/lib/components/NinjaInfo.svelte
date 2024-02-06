@@ -18,7 +18,7 @@
         max-height: 80dvh;
         width: fit-content;
         position: absolute;
-        top: 20dvh;
+        top: 25dvh;
         overflow: scroll;
 
         div {
@@ -67,7 +67,7 @@
     {#each ninjas as ninja, index}
         <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
             <span></span>
-            <h3>{ninja.at(0).nickname}</h3>
+            <h3>{ninja.at(0).name}</h3>
         </div>
     {/each}
 </section>

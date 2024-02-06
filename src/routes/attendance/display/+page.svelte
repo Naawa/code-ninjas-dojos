@@ -25,8 +25,6 @@
     let hour: number = 0;
     let update: any;
 
-    $: getNinjas(attendance.hourly.at(hour).scheduled);
-
     $: update = setInterval(function() {
         now = new Date().getTime();
         if(now < tHour02.getTime()) {
@@ -62,7 +60,8 @@
         }
     }
 
-    let block = "Ninja Training!";
+    let block = "Come back next time!";
+    $: getNinjas(attendance.hourly.at(hour).attending);
 </script>
 <style lang="scss">
     section {
@@ -76,10 +75,6 @@
         //background-color: #00f7ff;
         background: rgb(69,252,188);
         background: linear-gradient(0deg, rgba(69,252,188,1) 0%, rgba(0,255,235,1) 44%);
-
-        h2 {
-            text-align: center;
-        }
     }
 </style>
 
@@ -97,6 +92,7 @@
         <Timer startTime={tHour04} {block}></Timer>
         <NinjaInfo {ninjas}></NinjaInfo>
     {:else if hour == 0}
-        <h2>Goodbye! <br> Come again next time!</h2>
+        <Timer startTime={tHour01} {block}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
     {/if}
 </section>
