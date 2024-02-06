@@ -30,7 +30,7 @@ export interface Database {
             foreignKeyName: "admins_center_fkey"
             columns: ["center"]
             isOneToOne: false
-            referencedRelation: "sessions"
+            referencedRelation: "attendance"
             referencedColumns: ["location"]
           },
           {
@@ -42,34 +42,28 @@ export interface Database {
           }
         ]
       }
-      sessions: {
+      attendance: {
         Row: {
+          additional: Json[] | null
           center_admin: string | null
-          first_hour_attendance: string[] | null
-          fourth_hour_attendance: string[] | null
+          hourly: Json[] | null
           location: string
-          second_hour_attendance: string[] | null
-          third_hour_attendance: string[] | null
         }
         Insert: {
+          additional?: Json[] | null
           center_admin?: string | null
-          first_hour_attendance?: string[] | null
-          fourth_hour_attendance?: string[] | null
+          hourly?: Json[] | null
           location: string
-          second_hour_attendance?: string[] | null
-          third_hour_attendance?: string[] | null
         }
         Update: {
+          additional?: Json[] | null
           center_admin?: string | null
-          first_hour_attendance?: string[] | null
-          fourth_hour_attendance?: string[] | null
+          hourly?: Json[] | null
           location?: string
-          second_hour_attendance?: string[] | null
-          third_hour_attendance?: string[] | null
         }
         Relationships: [
           {
-            foreignKeyName: "sessions_center_admin_fkey"
+            foreignKeyName: "attendance_center_admin_fkey"
             columns: ["center_admin"]
             isOneToOne: false
             referencedRelation: "admins"

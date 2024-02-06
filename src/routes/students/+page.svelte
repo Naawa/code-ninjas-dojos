@@ -1,10 +1,6 @@
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation';
-
     export let data;
     const { students } = data;
-    invalidateAll()
-    
 </script>
 
 <section>
@@ -17,10 +13,10 @@
             </div>
             <h4>Add</h4>
         </a>
-        {#if students}
-            {#each students as student} 
-                <a href="/students/{student.nickname}">
-                    <h4>{student.nickname}</h4>
+        {#if students.data }
+            {#each students.data as student} 
+                <a href="/students/{student.name}">
+                    <h4>{student.name}</h4>
                     <p>{student.points} Points</p>
                 </a>
             {/each}

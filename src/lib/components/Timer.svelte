@@ -31,10 +31,7 @@
         seconds = 0;
     }
 
-    export let backgroundColor = "#0E2937";
-    export let color = "#FFCF46";
-    export let block: string;
-    export let shade = "#e6a800";
+    export let block: string = "Ninja Training!"
 </script>
 
 <style lang="scss">
@@ -44,11 +41,18 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 3em;
-        border-radius: 2em;
+        background-color: transparent;
         min-width: fit-content;
-        width: 40dvw;
-        max-height: 20dvh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25dvh;
+
+        h3 {
+            z-index: 0;
+            color: currentColor;
+        }
 
         div {
             display: flex;
@@ -56,7 +60,7 @@
             justify-content: center;
             align-items: baseline;
             gap: 4em;
-
+            width: 100%;
 
             p {
                 font-size: xx-large;
@@ -64,6 +68,7 @@
             }
 
             span {
+                position: relative;
                 display: flex;
                 justify-content: center;
                 align-items: baseline;
@@ -72,21 +77,35 @@
                 padding: 0;
                 width: fit-content;
                 height: fit-content;
+                background-image: none;
+                background-color: transparent;
             }
         }
+
+        .background {
+            background-image: url("../../../lwh/lwh01.svg#svgView(preserveAspectRatio(none))");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            height: 60dvh;
+            width: 100dvw;
+            top: 0;
+        }
     }
+
 </style>
 
-<span style="background-color: {backgroundColor};">
-    <h3 style="color: {color};">{block}</h3>
+<span>
+    <div class="background"></div>
+    <h3>{block}</h3>
     <div>
         <span>
-            <h1 style="color: {color};">{minute}</h1>
-            <p style="color: {shade};">Min</p>
+            <h1>{minute}</h1>
+            <p>Min</p>
         </span>
         <span>
-            <h1 style="color: {color};">{seconds}</h1>
-            <p style="color: {shade};">Sec</p>
+            <h1>{seconds}</h1>
+            <p>Sec</p>
         </span>
     </div>
 </span>

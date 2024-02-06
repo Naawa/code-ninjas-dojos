@@ -19,8 +19,8 @@
       <a href="/students">
         <h4>Students</h4>
       </a>
-      <a href="/sessions">
-        <h4>Sessions</h4>
+      <a href="/attendance">
+        <h4>Attendance</h4>
       </a>
       <a href="/shop">
         <h4>Shop</h4>

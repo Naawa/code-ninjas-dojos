@@ -1,54 +1,97 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-    import { twelveHourFormat } from "$lib/utils/timeFormat";
     export let data;
-    const { supabase, session } = data;
+    const { supabase, session, students, attendanceInfo} = data;
 
-    let students: string[] = ["Nawaz", "Dennis"];
-    let file: string;
-    let timeInput: string = "15:30";
+    let attendance: any = attendanceInfo?.first_hour_attendance;
 
-    let message: string;
+    let file: string; 
+    let studentNames: string[] = [];
+    let filtered: string = "";
 
-    async function addSession(timeInput: string, students: string[]) {
-        let hours: number = parseInt(timeInput.charAt(0) + timeInput.charAt(1));
-        let minutes: number = parseInt(timeInput.charAt(3) + timeInput.charAt(4));
-        let date: Date = new Date();
-        date.setHours(hours);
-        date.setMinutes(minutes);
-
-        if(date < new Date()) {
-            message = "Time has passed."
-        }
-        else {
-            const { data, error } = await supabase.from('sessions')
-            .update({ date: `${date.toISOString()}`, students: `{${students}}` })
-            .eq('center_admin', `${session.user.id}`)
-            .select()
-            goto("/sessions")
+    if(students) {
+        for(let i = 0; i < students?.length; i++) {
+            studentNames.push(students[i].nickname);
         }
     }
+
+    let key: string = "";
+
+    function add(name: string) {
+        if(!attendance.includes(name)) {
+            attendance.push(name);
+            attendance.sort();
+            attendance = attendance;
+        }
+    }
+    function remove(name: string) {
+        if(attendance.includes(name)) {
+            attendance.splice(attendance.indexOf(name), 1);
+            attendance.sort();
+            attendance = attendance;
+        }
+    }
+
+    function search(key: string) {
+        filtered = studentNames[studentNames.indexOf(key)];
+    }
+
+    async function updateHour(attendance: string[]) {
+        const { data, error } = await supabase
+        .from('sessions')
+        .update({ first_hour_attendance: `{${attendance}}` })
+        .eq('center_admin', `${session?.user.id}`)
+        .select()
+        goto("/sessions",);
+    }
+
 </script>
 
 <section>
     <div>
-        <p>
-        {#if message}
-            {message}
-        {/if}
-        </p>
-        <span>
-            <input type="time" bind:value={timeInput}>
-        </span>
-        <span>
-            <label>
-                <input type="file" bind:value={file}/>
-                Students Attending
-            </label>
-        </span>
+        <div>
+            <h3>Edit Hour</h3>
+            <span>
+                <strong>3:30 PM</strong>
+                <p>-</p>
+                <strong>4:30 PM</strong>
+            </span>
+        </div>
+        <div>
+            <h4>Attendance</h4>
+            <span>
+                <label>
+                    <input type="file" bind:value={file}/>
+                    Drop CSV
+                </label>
+            </span>
+            <span>
+                <input bind:value={key} type="text" placeholder="Search Student" on:keypress={() => search(key)}>
+            </span>
+            <span>
+                {#if filtered}
+                    <button id="add-student" on:click={() => add(filtered)}>Add {filtered}</button>
+                {/if}
+            </span>
+            <span>
+                <div>
+                    <label>
+                        <strong><u>Students Attending</u></strong>
+                        {#if attendance}
+                            {#each attendance as attendee}
+                                <span id="atdn-container">
+                                    <p>{attendee}</p>
+                                    <button id="rmv-student" on:click={() => remove(attendee)}>
+                                    </button>
+                                </span>
+                            {/each}
+                        {/if}
+                    </label>
+                </div>
+            </span>
+        </div>
     </div>
-    <button on:click={() => addSession(timeInput, students)}>Add Session</button>
-    <p><strong>Session</strong> will be scheduled for <strong>one hour</strong> after start time.</p>
+    <button on:click={() => updateHour(attendance)}>Update Session</button>
 </section>
 
 <style lang="scss">
@@ -58,17 +101,18 @@
         font-size: larger;
         gap: 3em;
         text-align: center;
-        min-height: fit-content;
+        min-height: 100dvh;
 
         div {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            gap: 1em;
+            gap: 3em;
+            width: 100%;
 
-            p {
-                height: 2em;
+            div {
+                gap: 1em;
             }
 
             span {
@@ -78,35 +122,13 @@
                 gap: 1em;
                 width: 100%;
 
-                strong {
-                    border-bottom: solid 2px rgb(59, 59, 59);
-                    padding: 1em;
-                    width: 8em;
-                    text-align: center;
-                }
-
-                input, label{
-                    min-width: 10em;
-                    width: 10em;
+                input {
+                    min-width: 16em;
+                    width: 16em;
                     font: inherit;
                 }
                 input[type="file"] {
                     display: none;
-                }
-                label {
-                    background-color: transparent;
-                    color: #030303;
-                    text-align: center;
-                    border: none;
-                    border-radius: 0.5em;
-                    border: solid 0.1em #d5d5d5;
-                    width: 12em;
-                    padding: 1em;
-
-                    &:hover {
-                        background-color: #303030;
-                        color: white;
-                    }
                 }
             }
         }
@@ -115,5 +137,53 @@
             width: 16em;
         }
     }
-    
+
+    label {
+        border: solid 0.1em #d5d5d5;
+        padding: 1em;
+        border-radius: 10px;
+        min-width: 16em;
+        width: 16em;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        max-height: 200px;
+    }
+
+    #atdn-container {
+        display: flex;
+        justify-content: space-between;
+        width: 125px;
+    }
+
+    #add-student {
+        min-width: fit-content;
+        width: fit-content;
+        background-color: transparent;
+        color: #030303;
+    }
+    #rmv-student {
+        min-width: fit-content;
+        width: fit-content;
+        background-color: rgb(255, 200, 200);
+        color: #030303;
+        height: min-content;
+        min-height: min-content;
+        min-width: min-content;
+        width: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        font-weight: lighter;
+        border-radius: 100%;
+        scale: 0.6;
+
+        &:hover {
+            background-color: rgb(255, 132, 132);
+        }
+    }
 </style>

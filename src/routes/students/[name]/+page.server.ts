@@ -6,10 +6,10 @@ export const load = async ({ params, locals: { supabase, getSession } }) => {
         redirect(302, "/")
     }
 
-    async function getProfile(nickname: string) {
+    async function getProfile(name: string) {
         let { data: profile, error } = await supabase
         .from('students')
-        .select("*").eq('nickname', nickname).maybeSingle();
+        .select("*").eq('name', name).maybeSingle();
 
         if(profile) {
             return profile;
@@ -18,7 +18,7 @@ export const load = async ({ params, locals: { supabase, getSession } }) => {
 	}
 
 	return {
-		profile: await getProfile(params.nickname)
+		profile: await getProfile(params.name)
 	};
 };
 
