@@ -24,23 +24,36 @@
     let ninjas: any[] = [];
     let hour: number = 0;
     let update: any;
+    let block: string = "";
 
     $: update = setInterval(function() {
         now = new Date().getTime();
         if(now < tHour02.getTime()) {
-            hour = 1;
+            if(hour != 1) {
+                hour = 1;
+                getNinjas(attendance.hourly.at(hour - 1).attending);
+            }
         }
         else if(now > tHour02.getTime() && now < tHour03.getTime()) {
-            hour = 2;
+            if(hour != 2) {
+                hour = 1;
+                getNinjas(attendance.hourly.at(hour - 1).attending);
+            }
         }
         else if(now > tHour03.getTime() && now < tHour04.getTime()) {
-            hour = 3;
+            if(hour != 3) {
+                hour = 1;
+                getNinjas(attendance.hourly.at(hour - 1).attending);
+            }
         }
         else if(now > tHour04.getTime() && now < tHour04.getTime() + 1) {
-            hour = 4;
+            if(hour != 4) {
+                hour = 1;
+                getNinjas(attendance.hourly.at(hour - 1).attending);
+            }
         }
         else {
-            hour = 0;
+            hour = 1;
         }
         update = clearInterval(update);
 
@@ -59,9 +72,6 @@
             }
         }
     }
-
-    let block = "Come back next time!";
-    $: getNinjas(attendance.hourly.at(hour).attending);
 </script>
 <style lang="scss">
     section {
