@@ -50,7 +50,7 @@
                         <h5>{hours[i].name} Hour</h5>
                         <p>Edit Details</p>
                     </span>
-                    <SessionInfo headCount={info.scheduled.length + info.attending.length} start={hours[i].time}></SessionInfo>
+                    <SessionInfo headCount={info.scheduled.length} start={hours[i].time}></SessionInfo>
                 </a>
             </div>
         {/each}

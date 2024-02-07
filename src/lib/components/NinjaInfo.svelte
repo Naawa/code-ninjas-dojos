@@ -12,34 +12,33 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        gap: 2em;
-        min-height: 40dvh;
+        gap: 1.5dvw;
+        min-height: fit-content;
         max-height: 80dvh;
         width: fit-content;
         position: absolute;
         top: 25dvh;
         overflow: scroll;
-
+    
         div {
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding-left: 3em;
             gap: 2em;
-            width: 14dvw;
-            min-width: 20em;
-            min-height: 6em;
-            padding: 0 3em;
+            width: 15dvw;
+            height: 6em;
             backdrop-filter: blur(3px);
-            //background-image: url("../../../Nameplate2.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-color: rgba(255, 255, 255, 255);
             box-shadow: 0 0 10px 2px rgb(255, 255, 255);
+            border-radius: 2px;
         }
 
         span {
-            height: 2.5em;
-            width: 2.5em;
+            height: 2.25em;
+            width: 2.25em;
             border-radius: 100%;
             display: flex;
             justify-content: center;
@@ -58,12 +57,53 @@
         h3 {
             text-align: center;
             color: currentColor;
+            font-size: 1.25em;
         }
     }
 </style>
 
 <section>
     {#each ninjas as ninja, index}
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
+        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+            <span></span>
+            <h3>{ninja.at(0).name}</h3>
+        </div>
         <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
             <span></span>
             <h3>{ninja.at(0).name}</h3>

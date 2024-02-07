@@ -29,6 +29,7 @@
         span {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 2em;
             padding: 2em;
             flex-wrap: wrap;
@@ -41,8 +42,8 @@
                 flex-direction: column;
                 gap: 1em;
                 padding: 2em;
-                min-height: 100px;
-                min-width: 125px;
+                height: 100px;
+                width: 150px;
                 justify-content: center;
                 text-decoration: none;
 

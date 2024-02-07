@@ -8,7 +8,7 @@ export const GET = async ({ locals: { supabase, getSession } }) => {
     // the user is not signed in
     throw error(401, { message: 'Unauthorized' })
   }
-  const { data } = await supabase.from('students').select("*").eq("center_admin", `${session?.user.id}`)
+  const { data } = await supabase.from('students').select("*").eq("center_admin", `${session?.user.id}`).order('name')
 
   return json({ data })
 }

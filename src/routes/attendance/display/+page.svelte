@@ -28,32 +28,31 @@
     let ninjas: any[] = [];
     let hour: number = 0;
     let update: any;
-    let block: string = "";
 
     $: update = setInterval(function() {
         now = new Date().getTime();
         if(now < tHour02.getTime()) {
             if(hour != 1) {
                 hour = 1;
-                getNinjas(attendance.hourly.at(hour - 1).attending);
+                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour02.getTime() && now < tHour03.getTime()) {
             if(hour != 2) {
                 hour = 2;
-                getNinjas(attendance.hourly.at(hour - 1).attending);
+                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour03.getTime() && now < tHour04.getTime()) {
             if(hour != 3) {
                 hour = 3;
-                getNinjas(attendance.hourly.at(hour - 1).attending);
+                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour04.getTime() && now < end.getTime()) {
             if(hour != 4) {
                 hour = 4;
-                getNinjas(attendance.hourly.at(hour - 1).attending);
+                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else {
@@ -76,8 +75,6 @@
             }
         }
     }
-
-    $: console.log(hour)
 </script>
 <style lang="scss">
     section {
@@ -95,20 +92,22 @@
 </style>
 
 <section>
-    {#if hour == 1}
-        <Timer startTime={tHour01}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {:else if hour == 2}
-        <Timer startTime={tHour02}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {:else if hour == 3}
-        <Timer startTime={tHour03}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {:else if hour == 4}
-        <Timer startTime={tHour04}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {:else if hour == 0}
-        <Timer startTime={tHour01}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {/if}
+    {#key ninjas}
+        {#if hour == 1}
+            <Timer startTime={tHour01}></Timer>
+            <NinjaInfo {ninjas}></NinjaInfo>
+        {:else if hour == 2}
+            <Timer startTime={tHour02}></Timer>
+            <NinjaInfo {ninjas}></NinjaInfo>
+        {:else if hour == 3}
+            <Timer startTime={tHour03}></Timer>
+            <NinjaInfo {ninjas}></NinjaInfo>
+        {:else if hour == 4}
+            <Timer startTime={tHour04}></Timer>
+            <NinjaInfo {ninjas}></NinjaInfo>
+        {:else if hour == 0}
+            <Timer startTime={tHour01}></Timer>
+            <NinjaInfo {ninjas}></NinjaInfo>
+        {/if}
+    {/key}
 </section>

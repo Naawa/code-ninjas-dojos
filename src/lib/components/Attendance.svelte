@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+    import csv from "csvtojson";
     
     export let data;
     let { supabase, session, students, attendance } = data
@@ -8,7 +9,6 @@
     export let hour: number;
 
     let scheduled = attendance.hourly.at(hour - 1).scheduled as string[];
-    let attending: string[] = attendance.hourly.at(hour - 1).attending as string[];
 
     let end = new Date(start);
     end.setHours(start.getHours() + 1)
@@ -16,6 +16,7 @@
     let studentNames: string[] = [];
     let filtered: string[] = [];
     let key: string = "";
+    let files: FileList;
 
     if(students) {
         for(let i = 0; i < students?.length; i++) {
@@ -24,7 +25,7 @@
     }
 
     function add(name: string) {
-        if(!scheduled.includes(name) && !attending.includes(name)) {
+        if(!scheduled.includes(name)) {
             scheduled.push(name);
             scheduled.sort();
             scheduled = scheduled;
@@ -40,24 +41,6 @@
         }
     }
 
-    function confirm(name: string) {
-        if(!attending.includes(name)) {
-            attending.push(name);
-            attending.sort();
-            attending = attending;
-            remove(name);
-        }
-    }
-
-    function cancel(name: string) {
-        if(attending.includes(name)) {
-            attending.splice(scheduled.indexOf(name), 1);
-            attending.sort();
-            attending = attending;
-            add(name);
-        }
-    }
-
     function search(key: string) {
         if(key.length > 0) {
             filtered = studentNames.filter(list => list.includes(key));
@@ -67,7 +50,7 @@
         }
     }
 
-    async function updateAttendance(scheduled: string[], attending: string[]) {
+    async function updateAttendance(scheduled: string[]) {
         let hourly = attendance.hourly;
         hourly.at(hour - 1).scheduled = scheduled;
         const { data, error } = await supabase
@@ -75,20 +58,21 @@
         .update({ hourly: hourly })
         .eq('center_admin', `${session?.user.id}`)
         .select()
-        updateAttending(attending);
         goto("/attendance")
     }
 
+    $: if (files) {
+        for (const file of files) {
+            bulkAdd(file)
+        }
+    }
 
-    async function updateAttending(attending: string[]) {
-        let hourly = attendance.hourly;
-        hourly.at(hour - 1).attending = attending;
-        const { data, error } = await supabase
-        .from('attendance')
-        .update({ hourly: hourly })
-        .eq('center_admin', `${session?.user.id}`)
-        .select()
-        goto("/attendance")
+    async function bulkAdd(file: any) {
+        const data = await file.text()
+        const jsonArray = await csv().fromString(data);
+        for(let i = 0; i < jsonArray.length; i++) {
+            add(jsonArray.at(i).Participant);
+        }
     }
 
 </script>
@@ -124,27 +108,22 @@
                         {attendee}
                     </strong>
                     <span>
-                        <button id="add" on:click={() => confirm(attendee)}></button>
                         <button id="remove" on:click={() => remove(attendee)}></button>
                     </span>
                 </span>
             {/each}
         </div>
-    </div>
-    <div>
-        <h4>Attending</h4>
         <div>
-            {#each attending as attendee}
-                <span>
-                    <strong>
-                        {attendee}
-                    </strong>
-                    <button id="remove" on:click={() => cancel(attendee)}></button>
-                </span>
-            {/each}
+            <label>
+                <input type="file" bind:files accept=".csv">
+                + CSV
+            </label>
+        </div>
+        <div>
+            <button on:click={() => {scheduled = []}}>Clear</button>
         </div>
     </div>
-    <button on:click={() => updateAttendance(scheduled, attending)}>Update Session</button>
+    <button on:click={() => updateAttendance(scheduled)}>Update Session</button>
 </section>
 
 <style lang="scss">
@@ -178,15 +157,40 @@
                 width: 100%;
             }
 
+            input[type="file"] {
+                display: none;
+            }
+
             div {
                 border: none;
-                    width: 100%;
-                span {
-                    min-width: 40%;
-                    width: 40%;
-                    justify-content: space-between;
+                width: 100%;
+                max-height: 10em;
+                overflow-y: scroll;
 
-                    button, #add {
+                button {
+                    background-color: transparent;
+                    color: currentColor;
+                    width: 100%;
+
+                    &:hover {
+                        background-color: #303030;
+                        color: white;
+                    }
+                }
+
+                span {
+                    min-width: 70%;
+                    width: 70%;
+                    justify-content: space-between;
+                    padding: 0 2em;
+
+                    span {
+                        min-width: fit-content;
+                        width: fit-content;
+                        padding: 0;
+                    }
+
+                    button {
                         min-width: 1em;
                         width: 1em;
                         height: 1em;
@@ -194,13 +198,6 @@
                         padding: 1em;
                         border-radius: 100%;
                         border: none;
-                        background-color: rgb(215, 255, 207);
-
-                        &:hover {
-                            background-color: rgb(172, 255, 172);
-                        }
-                    }
-                    #remove {
                         background-color: rgb(255, 207, 207);
                         &:hover {
                             background-color: rgb(255, 172, 172);

@@ -23,7 +23,7 @@ html {
             max-width: 100%;
         }
         
-        input, button, textarea, select {
+        input, button, textarea, select, label {
             padding: 1em;
             width: 80dvw;
             min-width: 240px;
@@ -84,7 +84,7 @@ button {
         color: #303030;;
     }
 }
-input {
+input, label {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
