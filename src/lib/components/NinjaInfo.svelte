@@ -65,8 +65,8 @@
 <section>
     {#each ninjas as ninja, index}
         <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span style="background-color: {ninja.at(0).belt};"></span>
-            <h3>{ninja.at(0).name}</h3>
+            <span style="background-color: {ninja.at(index).belt};"></span>
+            <h3>{ninja.at(index).name}</h3>
         </div>
     {/each}
 </section>
