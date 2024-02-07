@@ -19,7 +19,11 @@
     let tHour04 = new Date()
     tHour04.setHours(18);
     tHour04.setMinutes(30);
-    
+
+    let end = new Date();
+    end.setHours(19);
+    end.setMinutes(30);
+
     let now;
     let ninjas: any[] = [];
     let hour: number = 0;
@@ -46,7 +50,7 @@
                 getNinjas(attendance.hourly.at(hour - 1).attending);
             }
         }
-        else if(now > tHour04.getTime() && now < tHour04.getTime() + 1) {
+        else if(now > tHour04.getTime() && now < end.getTime()) {
             if(hour != 4) {
                 hour = 4;
                 getNinjas(attendance.hourly.at(hour - 1).attending);
@@ -72,6 +76,8 @@
             }
         }
     }
+
+    $: console.log(hour)
 </script>
 <style lang="scss">
     section {
