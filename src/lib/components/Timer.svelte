@@ -9,6 +9,8 @@
     let minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    let block: string = "Ninja Typing!"
+
     let countdown: any;
 
    $: if(!(startTime.getHours() > (now.getHours() + 1))) {
@@ -19,6 +21,22 @@
             seconds = (Math.floor((distance % (1000 * 60)) / 1000));
             countdown = clearInterval(countdown)
         }, 1000)
+
+        if(minute < 50 && minute > 30) {
+            block = "Ninja Training!"
+        }
+        if(minute < 30 && minute > 25) {
+            block = "Water Break!"
+        }
+        if(minute < 25 && minute > 10) {
+            block = "Ninja Training!"
+        }
+        if(minute < 10 && minute > 0) {
+            block = "Ninja Exploration!"
+        }
+        if(minute == 0) {
+            block = "Home Time!"
+        }
     } else {
         minute = 59;
         seconds = 59;
@@ -30,8 +48,6 @@
         minute = 0;
         seconds = 0;
     }
-
-    export let block: string = "Ninja Training!"
 </script>
 
 <style lang="scss">
