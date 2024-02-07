@@ -36,19 +36,19 @@
         }
         else if(now > tHour02.getTime() && now < tHour03.getTime()) {
             if(hour != 2) {
-                hour = 1;
+                hour = 2;
                 getNinjas(attendance.hourly.at(hour - 1).attending);
             }
         }
         else if(now > tHour03.getTime() && now < tHour04.getTime()) {
             if(hour != 3) {
-                hour = 1;
+                hour = 3;
                 getNinjas(attendance.hourly.at(hour - 1).attending);
             }
         }
         else if(now > tHour04.getTime() && now < tHour04.getTime() + 1) {
             if(hour != 4) {
-                hour = 1;
+                hour = 4;
                 getNinjas(attendance.hourly.at(hour - 1).attending);
             }
         }
