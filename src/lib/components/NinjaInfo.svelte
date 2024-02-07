@@ -49,9 +49,9 @@
             scale: 1.2;
             background-repeat: no-repeat;
             background-size: 100% 100%;
-            //background-color: aqua;
-            //background: rgb(69,252,188);
-            //background: linear-gradient(0deg, rgb(163, 255, 223) 0%, rgb(139, 255, 245) 44%);
+            background-color: aqua;
+            background: rgb(69,252,188);
+            background: linear-gradient(0deg, rgb(163, 255, 223) 0%, rgb(139, 255, 245) 44%);
             border: solid 4px currentColor;
         }
 
@@ -65,7 +65,7 @@
 <section>
     {#each ninjas as ninja, index}
         <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span style="background-color: {ninja.at(index).belt};"></span>
+            <span></span>
             <h3>{ninja.at(index).name}</h3>
         </div>
     {/each}
