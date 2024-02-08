@@ -17,7 +17,7 @@
 
     let countdown: any;
 
-   $: if(!(startTime.getHours() > (now.getHours() + 1))) {
+   $: if(!(startTime.getHours() > (now.getHours()))) {
         countdown = setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();
@@ -46,7 +46,8 @@
             block = "Home Time!"
             theme.set(homeTime);
         }
-    } else {
+    } 
+    else {
         minute = 59;
         seconds = 59;
         block = "Class will start soon."
