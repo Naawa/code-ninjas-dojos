@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+    import csv from "csvtojson";
+
+    let files: FileList;
+    let students: string[] = [];
 
     export let data;
     const { supabase, session } = data;
@@ -22,10 +26,43 @@
         .select()
         goto("/students")
     }
+
+
+    $: if (files) {
+        for (const file of files) {
+            viewStudents(file)
+        }
+    }
+    
+    async function viewStudents(file: any) {
+        const data = await file.text()
+        const jsonArray = await csv().fromString(data);
+        for(let i = 0; i < jsonArray.length; i++) {
+            students.push((jsonArray.at(i).Participant.replace(/ .*/,'')));
+        }
+        students = students;
+    }
+
+    async function addStudents(students: string[]) {
+        for(let i = 0; i < students.length; i++) {
+            const { data, error } = await supabase
+            .from('students')
+            .insert([
+                { 
+                    name: `${students[i]}`,  
+                    belt: "White",  
+                    points: 10,  
+                    center_admin: `${session?.user.id}`,  
+                },
+            ])
+            .select()
+            goto("/students");
+        }
+    }
 </script>
 
 <section>
-    <h3>Add Student</h3>
+    <h3>Single</h3>
     <div>
         <span>
             <strong>Name</strong>
@@ -41,6 +78,18 @@
         </span>
     </div>
     <button on:click={addStudent}>Add Student</button>
+    <h3>Multiple</h3>
+    <label>
+        <input type="file" bind:files accept=".csv">
+        + CSV
+    </label>
+    <div>
+        {#each students as student}
+            <h4>{student}</h4>
+
+        {/each}
+    </div>
+    <button on:click={() => addStudents(students)}>Add Students</button>
 </section>
 
 <style lang="scss">
@@ -80,5 +129,8 @@
             min-width: 16em;
             width: 16em;
         }
+    }
+    input[type="file"] {
+        display: none;
     }
 </style>

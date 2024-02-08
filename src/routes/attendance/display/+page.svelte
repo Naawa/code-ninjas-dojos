@@ -92,22 +92,20 @@
 </style>
 
 <section>
-    {#key ninjas}
-        {#if hour == 1}
-            <Timer startTime={tHour01}></Timer>
-            <NinjaInfo {ninjas}></NinjaInfo>
-        {:else if hour == 2}
-            <Timer startTime={tHour02}></Timer>
-            <NinjaInfo {ninjas}></NinjaInfo>
-        {:else if hour == 3}
-            <Timer startTime={tHour03}></Timer>
-            <NinjaInfo {ninjas}></NinjaInfo>
-        {:else if hour == 4}
-            <Timer startTime={tHour04}></Timer>
-            <NinjaInfo {ninjas}></NinjaInfo>
-        {:else if hour == 0}
-            <Timer startTime={tHour01}></Timer>
-            <NinjaInfo {ninjas}></NinjaInfo>
-        {/if}
-    {/key}
+    {#if hour == 1}
+        <Timer startTime={tHour01}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
+    {:else if hour == 2}
+        <Timer startTime={tHour02}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
+    {:else if hour == 3}
+        <Timer startTime={tHour03}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
+    {:else if hour == 4}
+        <Timer startTime={tHour04}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
+    {:else if hour == 0}
+        <Timer startTime={tHour01}></Timer>
+        <NinjaInfo {ninjas}></NinjaInfo>
+    {/if}
 </section>

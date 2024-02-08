@@ -26,7 +26,7 @@
             align-items: center;
             padding-left: 3em;
             gap: 2em;
-            width: 15dvw;
+            width: 20em;
             height: 6em;
             backdrop-filter: blur(3px);
             background-repeat: no-repeat;
@@ -64,46 +64,6 @@
 
 <section>
     {#each ninjas as ninja, index}
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
-        <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <span></span>
-            <h3>{ninja.at(0).name}</h3>
-        </div>
         <div in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
             <span></span>
             <h3>{ninja.at(0).name}</h3>

@@ -71,7 +71,7 @@
         const data = await file.text()
         const jsonArray = await csv().fromString(data);
         for(let i = 0; i < jsonArray.length; i++) {
-            add(jsonArray.at(i).Participant);
+            add(jsonArray.at(i).Participant.replace(/ .*/,''));
         }
     }
 
@@ -164,7 +164,7 @@
             div {
                 border: none;
                 width: 100%;
-                max-height: 10em;
+                max-height: 20em;
                 overflow-y: scroll;
 
                 button {
