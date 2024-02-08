@@ -16,14 +16,14 @@
 
     let countdown: any;
 
-   $: if(!(startTime.getHours() > (now.getHours() + 1))) {
+   $: if(now.getTime() > startTime.getTime()) {
         countdown = setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();
             minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
             seconds = (Math.floor((distance % (1000 * 60)) / 1000));
             countdown = clearInterval(countdown);
-        }, 3000)
+        }, 1000)
 
         if(minute < 50 && minute > 30) {
             block = "Ninja Training!";
