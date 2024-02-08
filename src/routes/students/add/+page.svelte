@@ -38,7 +38,18 @@
         const data = await file.text()
         const jsonArray = await csv().fromString(data);
         for(let i = 0; i < jsonArray.length; i++) {
-            students.push((jsonArray.at(i).Participant.replace(/ .*/,'')));
+            let student: string = jsonArray.at(i).Participant.replace(/ .*/,'');
+            let formated: string = "";
+            for(let j = 0; j < student.length; j++) {
+                if(j == 0) {
+                    formated += student.charAt(j).toUpperCase();
+                }
+                else {
+                    formated += student.charAt(j).toLowerCase();
+                }
+            }
+
+            students.push(formated);
         }
         students = students;
     }
