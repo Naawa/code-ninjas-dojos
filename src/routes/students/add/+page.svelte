@@ -49,7 +49,7 @@
                 }
             }
 
-            if(jsonArray.at(i).ParticipantLastName.length > 0) {
+            if(jsonArray.at(i).ParticipantLastName) {
                 formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
             }
 
