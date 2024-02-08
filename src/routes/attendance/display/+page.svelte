@@ -1,6 +1,7 @@
 <script lang="ts">
     import Timer from "$lib/components/Timer.svelte";
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
+	import { theme, training } from "$lib/stores/theme";
     export let data;
     const { attendance, supabase} = data;
 
@@ -60,8 +61,7 @@
         else {
             hour = 0;
         }
-        update = clearInterval(update);
-        
+        update = clearInterval(update);        
 
     }, 1000)
 
@@ -78,8 +78,6 @@
             }
         }
     }
-
-    console.log(hour)
 </script>
 <style lang="scss">
     section {
@@ -89,14 +87,40 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        //background-image: url("../../../../Background.jpg");
-        //background-color: #00f7ff;
-        background: rgb(69,252,188);
-        background: linear-gradient(0deg, rgba(69,252,188,1) 0%, rgba(0,255,235,1) 44%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        img {
+            position: absolute;
+        }
+
+        .bigFocus {
+            bottom: 2dvh;
+            max-height: 30dvh;
+            max-width: 50dvw;
+        }
+        .v1 {
+            left: 20dvw;
+            max-height: 10dvh;
+            top: 30dvh;
+        }
+        .v2 {
+            right: 10dvw;
+            top: 30dvh;
+            max-height: 12dvh;
+        }
+        .v3 {
+            top: 2dvh;
+            max-height: 18dvh;
+        }
     }
 </style>
 
-<section>
+<section style="{$theme.bdrop};">
+    <img class="bigFocus" src="{$theme.bigFocus}" alt="Big focus.">
+    <img class="v1" src="{$theme.v1}" alt="Big focus.">
+    <img class="v2" src="{$theme.v2}" alt="Big focus.">
+    <img class="v3" src="{$theme.v3}" alt="Big focus.">
     {#if hour == 1}
         <Timer startTime={tHour01}></Timer>
         <NinjaInfo {ninjas}></NinjaInfo>

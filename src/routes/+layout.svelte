@@ -3,7 +3,6 @@
     import "$lib/scss/styles.scss"
     import { invalidate } from '$app/navigation'
     import { onMount } from 'svelte'
-	  import Navigation from "$lib/components/Navigation.svelte";
   
     export let data
   
@@ -23,5 +22,4 @@
     });
   </script>
   
-  <Navigation></Navigation>
   <slot />
