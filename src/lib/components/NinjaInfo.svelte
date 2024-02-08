@@ -2,6 +2,7 @@
 	import { fly } from "svelte/transition";
     
     export let ninjas: any;
+    console.log(ninjas)
 </script>
 
 <style lang="scss">
@@ -50,7 +51,7 @@
             background-size: 100% 100%;
             background-color: aqua;
             background: rgb(69,252,188);
-            background: linear-gradient(0deg, rgb(163, 255, 223) 0%, rgb(139, 255, 245) 44%);
+            background: linear-gradient(0deg, #a3ffdf 0%, #8bfff5 44%);
             border: solid 4px currentColor;
         }
 

@@ -13,7 +13,7 @@
             </div>
             <h4>Add</h4>
         </a>
-        {#if students.data }
+        {#if students.data}
             {#each students.data as student} 
                 <a href="/students/{student.name}">
                     <h4>{student.name}</h4>
@@ -42,8 +42,8 @@
                 flex-direction: column;
                 gap: 1em;
                 padding: 2em;
-                height: 100px;
-                width: 150px;
+                height: 10em;
+                width: 14em;
                 justify-content: center;
                 text-decoration: none;
 

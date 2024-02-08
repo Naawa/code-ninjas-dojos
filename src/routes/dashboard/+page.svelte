@@ -62,9 +62,10 @@
 
             a {
               padding: 1em;
-              min-height: 150px;
+              min-height: fit-content;
+              height: 10em;
               width: 100%;
-              max-width: 200px;
+              max-width: 20em;
               border-radius: 0.5em;
               border: solid 0.1em #d5d5d5;
               text-decoration: none;

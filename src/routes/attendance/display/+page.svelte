@@ -28,6 +28,8 @@
     let ninjas: any[] = [];
     let hour: number = 0;
     let update: any;
+    getNinjas(attendance.hourly.at(0).scheduled);
+
 
     $: update = setInterval(function() {
         now = new Date().getTime();
@@ -56,9 +58,10 @@
             }
         }
         else {
-            hour = 1;
+            hour = 0;
         }
         update = clearInterval(update);
+        
 
     }, 1000)
 
@@ -75,6 +78,8 @@
             }
         }
     }
+
+    console.log(hour)
 </script>
 <style lang="scss">
     section {

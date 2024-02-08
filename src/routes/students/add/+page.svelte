@@ -86,7 +86,6 @@
     <div>
         {#each students as student}
             <h4>{student}</h4>
-
         {/each}
     </div>
     <button on:click={() => addStudents(students)}>Add Students</button>

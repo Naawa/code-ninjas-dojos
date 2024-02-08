@@ -45,8 +45,9 @@
     
     $: if(distance <= 0) {
         countdown = clearInterval(countdown);
-        minute = 0;
-        seconds = 0;
+        minute = 59;
+        seconds = 59;
+        block = "Come back tomorrow.";
     }
 </script>
 
