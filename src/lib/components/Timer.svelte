@@ -14,10 +14,9 @@
     theme.set(typing);
     
 
-
     let countdown: any;
 
-   $: if(!(startTime.getHours() > (now.getHours()))) {
+   $: if(now.getTime() > startTime.getTime()) {
         countdown = setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();

@@ -71,7 +71,7 @@
         const data = await file.text()
         const jsonArray = await csv().fromString(data);
         for(let i = 0; i < jsonArray.length; i++) {
-            let student: string = jsonArray.at(i).Participant.replace(/ .*/,'');
+            let student: string = jsonArray.at(i).Participan.replace(/ .*/,'');
             let formated: string = "";
             for(let j = 0; j < student.length; j++) {
                 if(j == 0) {
