@@ -49,7 +49,13 @@
                 }
             }
 
-            students.push(formated);
+            if(jsonArray.at(i).ParticipantLastName.length > 0) {
+                formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
+            }
+
+            if(!students.includes(formated)) {
+                students.push(formated);
+            }
         }
         students = students;
     }
@@ -94,6 +100,7 @@
         <input type="file" bind:files accept=".csv">
         + CSV
     </label>
+    <h4>{students.length}</h4>
     <div>
         {#each students as student}
             <h4>{student}</h4>

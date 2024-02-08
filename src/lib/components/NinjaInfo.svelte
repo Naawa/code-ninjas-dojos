@@ -27,8 +27,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding-left: 3em;
-            gap: 2.2em;
+            padding-left: 2em;
+            gap: 2em;
             width: 20em;
             height: 6em;
             backdrop-filter: blur(3px);
@@ -59,7 +59,7 @@
         h3 {
             text-align: center;
             color: currentColor;
-            font-size: 1.6em;
+            font-size: 1.54em;
         }
     }
 </style>

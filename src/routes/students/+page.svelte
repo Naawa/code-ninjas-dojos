@@ -4,7 +4,7 @@
 </script>
 
 <section>
-    <h3>Students</h3>
+    <h3>{students.data.length} Students</h3>
     <span>
         <a href="/students/add" class="div">
             <div>
@@ -43,7 +43,7 @@
                 gap: 1em;
                 padding: 2em;
                 height: 10em;
-                width: 14em;
+                width: 20em;
                 justify-content: center;
                 text-decoration: none;
 

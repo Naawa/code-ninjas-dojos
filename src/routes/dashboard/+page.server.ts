@@ -7,7 +7,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     }
 
     async function getAdmin() {
-        let { data: admin, error } = await supabase.from("admins").select("*").eq('id', `${session?.user.id}`).maybeSingle();
+        let { data: admin, error } = await supabase.from("admins").select("*").eq('center_admin', `${session?.user.id}`).maybeSingle();
 
         if(error) {
             console.log(error);

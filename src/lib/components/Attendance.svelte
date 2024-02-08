@@ -71,7 +71,22 @@
         const data = await file.text()
         const jsonArray = await csv().fromString(data);
         for(let i = 0; i < jsonArray.length; i++) {
-            add(jsonArray.at(i).Participant.replace(/ .*/,''));
+            let student: string = jsonArray.at(i).Participant.replace(/ .*/,'');
+            let formated: string = "";
+            for(let j = 0; j < student.length; j++) {
+                if(j == 0) {
+                    formated += student.charAt(j).toUpperCase();
+                }
+                else {
+                    formated += student.charAt(j).toLowerCase();
+                }
+            }
+
+            if(jsonArray.at(i).ParticipantLastName.length > 0) {
+                formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
+            }
+
+            add(formated)
         }
     }
 
