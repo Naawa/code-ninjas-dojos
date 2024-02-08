@@ -16,7 +16,7 @@
 
     let countdown: any;
 
-   $: if(now.getTime() > startTime.getTime()) {
+   $: if(!(startTime.getHours() > (now.getHours() + 1))) {
         countdown = setInterval(() => {
             now = new Date();
             distance = endTime.getTime() - now.getTime();
