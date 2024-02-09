@@ -28,7 +28,6 @@
 
     const hours: Hour[] = [];
     hours.push({name: "First", time: first}, {name: "Second", time: second}, {name: "Third", time: third}, {name: "Fourth", time: fourth});
-
 </script>
 <section>
     <h3>Display</h3>

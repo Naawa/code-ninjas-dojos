@@ -12,33 +12,36 @@ export type Database = {
       admins: {
         Row: {
           center: string | null
-          id: string
+          center_admin: string | null
+          id: number
           name: string
         }
         Insert: {
           center?: string | null
-          id: string
+          center_admin?: string | null
+          id?: number
           name: string
         }
         Update: {
           center?: string | null
-          id?: string
+          center_admin?: string | null
+          id?: number
           name?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "admins_center_admin_fkey"
+            columns: ["center_admin"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "admins_center_fkey"
             columns: ["center"]
             isOneToOne: false
             referencedRelation: "attendance"
             referencedColumns: ["location"]
-          },
-          {
-            foreignKeyName: "admins_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
           }
         ]
       }
@@ -61,15 +64,7 @@ export type Database = {
           hourly?: Json[] | null
           location?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "attendance_center_admin_fkey"
-            columns: ["center_admin"]
-            isOneToOne: false
-            referencedRelation: "admins"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
       students: {
         Row: {
@@ -96,7 +91,15 @@ export type Database = {
           nameplates?: number[] | null
           points?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "students_center_admin_fkey"
+            columns: ["center_admin"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {

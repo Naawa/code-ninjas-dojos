@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
+	import { goto, invalidate } from "$app/navigation";
+	import { ninjas } from "$lib/stores/ninjas";
     import csv from "csvtojson";
     
     export let data;
@@ -29,6 +30,7 @@
             scheduled.push(name);
             scheduled.sort();
             scheduled = scheduled;
+            ninjas.set(scheduled);
         }
     }
 
@@ -38,6 +40,7 @@
             scheduled.splice(scheduled.indexOf(name), 1);
             scheduled.sort();
             scheduled = scheduled;
+            ninjas.set(scheduled);
         }
     }
 
@@ -86,6 +89,7 @@
                 formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
             }
             add(formated)
+            await invalidate('/attendance/display');
         }
     }
 

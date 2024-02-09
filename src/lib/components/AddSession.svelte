@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-    export let data;
-    const { supabase, session, students, attendanceInfo} = data;
+    export let data: any;
+    let { supabase, session, students, attendanceInfo} = data;
+    $: ({ supabase } = data)
+    
 
     let attendance: any = attendanceInfo?.first_hour_attendance;
 

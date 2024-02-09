@@ -3,6 +3,7 @@
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
+	import { invalidateAll } from "$app/navigation";
     export let data;
     const { attendance, supabase } = data;
 
@@ -72,16 +73,31 @@
                 .eq('name', `${list[i]}`)
                 students.push(ninja?.at(0));
             }
-
             ninjas.set(students);
         }
     }
 
     $: {
         if(hour <= 4) {
-            getNinjas(attendance.hourly.at(hour - 1).scheduled);
+            getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
     }
+
+    const attendanceUpdates = supabase
+    .channel('schema-db-changes')
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+      },
+      () => {
+            invalidateAll()
+            getNinjas(attendance.hourly.at(hour - 1).scheduled);   
+        }
+    )
+    .subscribe()
+
 </script>
 <style lang="scss">
     section {

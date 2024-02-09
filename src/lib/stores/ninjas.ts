@@ -1,7 +1,8 @@
 import { writable } from "svelte/store"
 
 function createNinjas() {
-    let ninjas = writable<any>()
+    const list: string[] = []
+    let ninjas = writable<any>(list)
 
     return {
         ...ninjas
