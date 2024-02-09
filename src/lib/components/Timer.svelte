@@ -50,7 +50,6 @@
         minute = 59;
         seconds = 59;
         block = "Class will start soon."
-        theme.set(typing);
     }
     
     $: if(distance <= 0) {
