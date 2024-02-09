@@ -1,9 +1,10 @@
 <script lang="ts">
     import Timer from "$lib/components/Timer.svelte";
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
-	import { theme, training } from "$lib/stores/theme";
+	import { theme } from "$lib/stores/theme";
+	import { ninjas } from "$lib/stores/ninjas";
     export let data;
-    const { attendance, supabase} = data;
+    const { attendance, supabase } = data;
 
     let tHour01 = new Date()
     tHour01.setHours(15);
@@ -25,57 +26,60 @@
     end.setHours(19);
     end.setMinutes(30);
 
-    let now;
-    let ninjas: any[] = [];
+    let now: number = new Date().getTime();
     let hour: number = 0;
     let update: any;
-    getNinjas(attendance.hourly.at(0).scheduled);
 
 
     $: update = setInterval(function() {
-        now = new Date().getTime();
         if(now < tHour02.getTime()) {
             if(hour != 1) {
                 hour = 1;
-                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour02.getTime() && now < tHour03.getTime()) {
             if(hour != 2) {
                 hour = 2;
-                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour03.getTime() && now < tHour04.getTime()) {
             if(hour != 3) {
                 hour = 3;
-                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else if(now > tHour04.getTime() && now < end.getTime()) {
             if(hour != 4) {
                 hour = 4;
-                getNinjas(attendance.hourly.at(hour - 1).scheduled);
             }
         }
         else {
-            hour = 0;
+            if(hour != 5) {
+                hour = 5;
+            }
         }
-        update = clearInterval(update);        
+        now = new Date().getTime();
+        update = clearInterval(update);     
 
     }, 1000)
 
     async function getNinjas(list: string[] | null) {
         if(list) {
-            ninjas = []
+            let students: {}[] = []
             for(let i = 0; i < list.length; i++) {
                 let { data: ninja, error } = await supabase
                 .from('students')
                 .select("*")
                 .eq('name', `${list[i]}`)
-                ninjas.push(ninja);
-                ninjas = ninjas;
+                students.push(ninja?.at(0));
             }
+
+            ninjas.set(students);
+        }
+    }
+
+    $: {
+        if(hour <= 4) {
+            getNinjas(attendance.hourly.at(hour - 1).scheduled);
         }
     }
 </script>
@@ -123,18 +127,14 @@
     <img class="v3" src="{$theme.v3}" alt="Big focus.">
     {#if hour == 1}
         <Timer startTime={tHour01}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
     {:else if hour == 2}
         <Timer startTime={tHour02}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
     {:else if hour == 3}
         <Timer startTime={tHour03}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
     {:else if hour == 4}
         <Timer startTime={tHour04}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
-    {:else if hour == 0}
-        <Timer startTime={tHour01}></Timer>
-        <NinjaInfo {ninjas}></NinjaInfo>
+    {/if}
+    {#if hour < 5}
+        <NinjaInfo></NinjaInfo>
     {/if}
 </section>

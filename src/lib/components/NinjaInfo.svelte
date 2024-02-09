@@ -1,11 +1,10 @@
 <script lang="ts">
+	import { ninjas } from "$lib/stores/ninjas";
 	import { theme } from "$lib/stores/theme";
 	import { fly } from "svelte/transition";
     
     $: bgCol = $theme.bgCol;
     $: textCol = $theme.textCol;
-
-    export let ninjas: any;
 </script>
 
 <style lang="scss">
@@ -65,10 +64,10 @@
 </style>
 
 <section>
-    {#each ninjas as ninja, index}
+    {#each $ninjas as ninja, index}
         <div style="background-color: {bgCol};" in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <img src="../../../belts/{ninja.at(0).belt}.png" alt="Icon.">
-            <h3 style="color: {textCol};">{ninja.at(0).name}</h3>
+            <img src="../../../belts/{ninja.belt}.png" alt="Icon.">
+            <h3 style="color: {textCol};">{ninja.name}</h3>
         </div>
     {/each}
 </section>

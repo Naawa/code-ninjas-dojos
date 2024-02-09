@@ -11,7 +11,7 @@ interface Theme {
     v3: string,
 }
 
-function createTheme() {
+async function createTheme() {
     let theme = writable<Theme>({
         bdrop: "",
         bgCol: "",
@@ -28,7 +28,7 @@ function createTheme() {
     }
 }
 
-export const theme = createTheme()
+export const theme = await createTheme()
 
 export const typing: Theme = {
     bdrop: "background: linear-gradient(312deg, rgba(0,169,255,1) 0%, rgba(69,252,188,1) 100%)",

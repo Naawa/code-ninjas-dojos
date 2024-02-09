@@ -12,7 +12,6 @@
     let block: string = ""
     block = "Typing!";
     theme.set(typing);
-    
 
     let countdown: any;
 
@@ -29,19 +28,19 @@
             block = "Ninja Training!";
             theme.set(training);
         }
-        if(minute < 30 && minute > 25) {
+        else if(minute < 30 && minute > 25) {
             block = "Water Break!"
             theme.set(waterBreak);
         }
-        if(minute < 25 && minute > 10) {
+        else if(minute < 25 && minute > 10) {
             block = "Ninja Training!"
             theme.set(training);
         }
-        if(minute < 10 && minute > 0) {
+        else if(minute < 10 && minute > 0) {
             block = "Ninja Exploration!"
             theme.set(exploration);
         }
-        if(minute == 0) {
+        else if(minute == 0) {
             block = "Home Time!"
             theme.set(homeTime);
         }
@@ -49,7 +48,7 @@
     else {
         minute = 59;
         seconds = 59;
-        block = "Class will start soon."
+        block = "Class will begin shortly.";
     }
     
     $: if(distance <= 0) {
