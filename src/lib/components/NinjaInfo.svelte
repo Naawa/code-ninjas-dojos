@@ -2,8 +2,8 @@
 	import { theme } from "$lib/stores/theme";
 	import { fly } from "svelte/transition";
     
-    let bgCol = $theme.bgCol;
-    let textCol = $theme.textCol;
+    $: bgCol = $theme.bgCol;
+    $: textCol = $theme.textCol;
 
     export let ninjas: any;
 </script>
