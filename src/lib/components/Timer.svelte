@@ -56,6 +56,7 @@
         minute = 59;
         seconds = 59;
         block = "Come back tomorrow.";
+        theme.set(typing)
     }
 </script>
 

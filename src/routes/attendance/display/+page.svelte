@@ -3,30 +3,39 @@
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
-	import { invalidate, invalidateAll } from "$app/navigation";
-	import { onMount } from "svelte";
     export let data;
     const { attendance, supabase } = data;
 
-    let tHour01 = new Date()
-    tHour01.setHours(15);
-    tHour01.setMinutes(30);
-
-    let tHour02 = new Date()
-    tHour02.setHours(16);
-    tHour02.setMinutes(30);
-
-    let tHour03 = new Date()
-    tHour03.setHours(17);
-    tHour03.setMinutes(30);
-
-    let tHour04 = new Date()
-    tHour04.setHours(18);
-    tHour04.setMinutes(30);
-
+    let first = new Date()
+    let second = new Date()
+    let third = new Date()
+    let fourth = new Date()
     let end = new Date();
-    end.setHours(19);
-    end.setMinutes(30);
+
+    if(first.getDay() != 6) {
+        first.setHours(15);
+        first.setMinutes(30);
+        second.setHours(16);
+        second.setMinutes(30);
+        third.setHours(17);
+        third.setMinutes(30);
+        fourth.setHours(18);
+        fourth.setMinutes(30);
+        end.setHours(19);
+        end.setMinutes(30);
+    }
+    else {
+        first.setHours(10);
+        first.setMinutes(0);
+        second.setHours(11);
+        second.setMinutes(0);
+        third.setHours(12);
+        third.setMinutes(0);
+        fourth.setHours(13);
+        fourth.setMinutes(0);
+        end.setHours(14);
+        end.setMinutes(0);
+    }
 
     let now: number = new Date().getTime();
     let hour: number = 0;
@@ -34,22 +43,22 @@
 
 
     $: update = setInterval(function() {
-        if(now < tHour02.getTime()) {
+        if(now < second.getTime()) {
             if(hour != 1) {
                 hour = 1;
             }
         }
-        else if(now > tHour02.getTime() && now < tHour03.getTime()) {
+        else if(now > second.getTime() && now < third.getTime()) {
             if(hour != 2) {
                 hour = 2;
             }
         }
-        else if(now > tHour03.getTime() && now < tHour04.getTime()) {
+        else if(now > third.getTime() && now < fourth.getTime()) {
             if(hour != 3) {
                 hour = 3;
             }
         }
-        else if(now > tHour04.getTime() && now < end.getTime()) {
+        else if(now > fourth.getTime() && now < end.getTime()) {
             if(hour != 4) {
                 hour = 4;
             }
@@ -144,13 +153,13 @@
     <img class="v2" src="{$theme.v2}" alt="Big focus.">
     <img class="v3" src="{$theme.v3}" alt="Big focus.">
     {#if hour == 1}
-        <Timer startTime={tHour01}></Timer>
+        <Timer startTime={first}></Timer>
     {:else if hour == 2}
-        <Timer startTime={tHour02}></Timer>
+        <Timer startTime={second}></Timer>
     {:else if hour == 3}
-        <Timer startTime={tHour03}></Timer>
+        <Timer startTime={third}></Timer>
     {:else if hour >= 4}
-        <Timer startTime={tHour04}></Timer>
+        <Timer startTime={fourth}></Timer>
     {/if}
     <NinjaInfo></NinjaInfo>
 </section>

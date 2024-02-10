@@ -6,20 +6,30 @@
     const hourly = attendance.hourly;
 
     let first = new Date()
-    first.setHours(15);
-    first.setMinutes(30);
-    
     let second = new Date()
-    second.setHours(16);
-    second.setMinutes(30);
-
     let third = new Date()
-    third.setHours(17);
-    third.setMinutes(30);
-
     let fourth = new Date()
-    fourth.setHours(18);
-    fourth.setMinutes(30);
+    
+    if(first.getDay() != 6) {
+        first.setHours(15);
+        first.setMinutes(30);
+        second.setHours(16);
+        second.setMinutes(30);
+        third.setHours(17);
+        third.setMinutes(30);
+        fourth.setHours(18);
+        fourth.setMinutes(30);
+    }
+    else {
+        first.setHours(10);
+        first.setMinutes(0);
+        second.setHours(11);
+        second.setMinutes(0);
+        third.setHours(12);
+        third.setMinutes(0);
+        fourth.setHours(13);
+        fourth.setMinutes(0);
+    }
 
     interface Hour {
         name: string,
