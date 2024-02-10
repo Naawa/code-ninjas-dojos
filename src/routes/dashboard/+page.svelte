@@ -8,6 +8,7 @@
   
   const handleSignOut = async () => {
     await supabase.auth.signOut()
+    goto('/');
   }
 </script>
 

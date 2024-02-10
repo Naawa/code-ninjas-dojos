@@ -95,7 +95,6 @@
         }
     )
     .subscribe()
-
 </script>
 <style lang="scss">
     section {

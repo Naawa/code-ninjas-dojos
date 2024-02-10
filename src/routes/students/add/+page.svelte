@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { studentListFormat } from '$lib/utils/studentListFormat.js';
-    import csv from "csvtojson";
 
     let files: FileList;
     let students: string[] = [];
