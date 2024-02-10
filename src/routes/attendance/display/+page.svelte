@@ -70,6 +70,7 @@
                 .from('students')
                 .select("*")
                 .eq('name', `${list[i]}`)
+                if(ninja) {}
                 students.push(ninja?.at(0));
             }
             ninjas.set(students);

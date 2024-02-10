@@ -5,7 +5,6 @@
     
     $: bgCol = $theme.bgCol;
     $: textCol = $theme.textCol;
-    $: console.log($ninjas)
 </script>
 
 <style lang="scss">
