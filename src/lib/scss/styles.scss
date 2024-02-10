@@ -92,6 +92,12 @@ input, label {
     background-color: transparent;
     font-size: clamp(12px, 1dvw, 56px);
 }
+
+label {
+    &:hover {
+        background-color: whitesmoke;
+    }
+}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
