@@ -2,18 +2,20 @@ import csv from "csvtojson";
 
 const converter = csv({
     trim: true,
+    includeColumns: /(Participant|FirstName|LastName)/,
+    checkType: true,
     noheader: false,
-    headers: ['FullName', 'FirstName', 'LastName'],
-    checkType: true
+    headers: ['FirstName','LastName']
 });
 
 export async function studentListFormat(csv: string): Promise<string[]> {
     let students: string[] = []
     const jsonArray = await converter.fromString(csv);
+    console.log(jsonArray);
     for(let i = 0; i < jsonArray.length; i++) {
-        if(jsonArray.at(i).FullName) {
-            let name = formatFirst(jsonArray.at(i).FullName.split(" ")[0]);
-            let lastName = jsonArray.at(i).FullName.split(" ")[1]
+        if(jsonArray.at(i).LastName.split(" ")[1]) {
+            let name = formatFirst(jsonArray.at(i).LastName.split(" ")[0]);
+            let lastName = jsonArray.at(i).LastName.split(" ")[1]
 
             if(lastName) {
                 name += " " + abvLast(lastName);
