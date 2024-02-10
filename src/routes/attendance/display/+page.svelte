@@ -145,7 +145,7 @@
         <Timer startTime={tHour02}></Timer>
     {:else if hour == 3}
         <Timer startTime={tHour03}></Timer>
-    {:else if hour == 4}
+    {:else if hour >= 4}
         <Timer startTime={tHour04}></Timer>
     {/if}
     {#if hour < 5}
