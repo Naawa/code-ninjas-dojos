@@ -5,9 +5,14 @@
 
     let hour: number = 2;
     let start = new Date()
-    start.setHours(16);
-    start.setMinutes(30);
-
+    if(start.getDay() != 6) {
+        start.setHours(16);
+        start.setMinutes(30);
+    }
+    else {
+        start.setHours(11);
+        start.setMinutes(0);
+    }
 
 
 </script>

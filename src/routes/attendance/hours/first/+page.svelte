@@ -5,8 +5,16 @@
 
     let hour: number = 1;
     let start = new Date()
-    start.setHours(15);
-    start.setMinutes(30);
+
+    if(start.getDay() != 6) {
+        start.setHours(15);
+        start.setMinutes(30);
+    }
+    else {
+        start.setHours(10);
+        start.setMinutes(0);
+    }
+
 
 
 
