@@ -79,6 +79,11 @@
         }
     }
 
+    function clear() {
+        students = [];
+        goto("/attendance")
+    }
+
 </script>
 
 <section>
