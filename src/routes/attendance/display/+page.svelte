@@ -104,7 +104,7 @@
         schema: 'public',
       },
       (payload) => {
-            getNinjas(payload.new.hourly.at(3).scheduled);  
+            getNinjas(payload.new.hourly.at(hour - 1).scheduled);  
         }
     )
     .subscribe()
