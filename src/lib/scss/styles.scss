@@ -28,7 +28,8 @@ html {
             width: 80dvw;
             min-width: 240px;
             min-height: 56px;
-            max-width: 400px;
+            max-height: 10dvw;
+            max-width: 40dvw;
             text-align: center;
         }
         
@@ -78,6 +79,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: clamp(12px, 1.5dvw, 56px);
 
     &:hover {
         background-color: white;
@@ -88,6 +90,7 @@ input, label {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
+    font-size: clamp(12px, 1.5dvw, 56px);
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

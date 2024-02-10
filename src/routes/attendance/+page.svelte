@@ -75,7 +75,7 @@
             justify-content: center;
             flex-direction: column;
             width: 90dvw;
-            max-width: 800px;
+            max-width: 80dvw;
             gap: 2em;
 
             div, span {

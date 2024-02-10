@@ -1,10 +1,35 @@
 <script lang="ts">
     export let data;
     const { students } = data;
+
+    let filtered: any = [];
+    let key: string = "";
+
+    function search(key: string) {
+        if(key.length > 0) {
+            for(let i = 0; i < students.data.length; i++) {
+                if(students.data[i].name.split(" ")[0].toLowerCase() == key.toLowerCase()) {
+                    filtered = [students.data[i]];
+                }
+            }
+        }
+        else {
+            filtered = [];
+        }
+    }
 </script>
 
 <section>
     <h3>{students.data.length} Students</h3>
+    <input type="text" bind:value={key} on:keyup={() => search(key)} placeholder="Search">
+        <div>
+            {#each filtered as student}
+                <a href="/students/{student.name}">
+                    <h4>{student.name}</h4>
+                    <p>{student.points} Points</p>
+                </a>
+            {/each}
+        </div>
     <span>
         <a href="/students/add" class="div">
             <div>

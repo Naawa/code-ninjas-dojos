@@ -80,7 +80,8 @@
     }
 
     function clear() {
-        students = [];
+        scheduled = [];
+        updateAttendance(scheduled);
         goto("/attendance")
     }
 
@@ -111,10 +112,10 @@
     <div>
         <h4>{scheduled.length} Scheduled</h4>
         <div>
-            {#each scheduled as attendee}
+            {#each scheduled as attendee, i}
                 <span>
                     <strong>
-                        {attendee}
+                        {i+ 1}. {attendee}
                     </strong>
                     <span>
                         <button id="remove" on:click={() => remove(attendee)}></button>
@@ -129,7 +130,7 @@
             </label>
         </div>
         <div>
-            <button on:click={() => {scheduled = []}}>Clear</button>
+            <button on:click={clear}>Clear</button>
         </div>
     </div>
     <button on:click={() => updateAttendance(scheduled)}>Update Session</button>
@@ -142,10 +143,10 @@
             justify-content: center;
             align-items: center;
             gap: 2em;
-            width: 80dvw;
+            width: fit-content;
             min-width: 240px;
             min-height: 48px;
-            max-width: 400px;
+            max-width: 80dvw;
         }
         div {
             display: flex;
@@ -160,7 +161,7 @@
             width: 80dvw;
             min-width: 240px;
             min-height: 48px;
-            max-width: 400px;
+            max-width: 60dvw;
 
             input {
                 width: 100%;
@@ -175,6 +176,10 @@
                 width: 100%;
                 max-height: 20em;
                 overflow-y: scroll;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 2em;
 
                 button {
                     background-color: transparent;
@@ -192,6 +197,7 @@
                     width: 70%;
                     justify-content: space-between;
                     padding: 0 2em;
+                    display: flex;
 
                     span {
                         min-width: fit-content;
