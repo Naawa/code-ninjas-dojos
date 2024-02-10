@@ -3,7 +3,6 @@
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
-	import { invalidateAll } from "$app/navigation";
     export let data;
     const { attendance, supabase } = data;
 
@@ -91,8 +90,7 @@
         event: '*',
         schema: 'public',
       },
-      () => {
-            invalidateAll()
+      (payload) => {
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
     )

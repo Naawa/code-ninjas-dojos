@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { studentListFormat } from '$lib/utils/studentListFormat.js';
     import csv from "csvtojson";
 
     let files: FileList;
@@ -35,27 +36,11 @@
     }
     
     async function viewStudents(file: any) {
+        students = [];
         const data = await file.text()
-        const jsonArray = await csv().fromString(data);
-        for(let i = 0; i < jsonArray.length; i++) {
-            let student: string = jsonArray.at(i).Participant.replace(/ .*/,'');
-            let formated: string = "";
-            for(let j = 0; j < student.length; j++) {
-                if(j == 0) {
-                    formated += student.charAt(j).toUpperCase();
-                }
-                else {
-                    formated += student.charAt(j).toLowerCase();
-                }
-            }
-
-            if(jsonArray.at(i).ParticipantLastName) {
-                formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
-            }
-
-            if(!students.includes(formated)) {
-                students.push(formated);
-            }
+        let formatedStudents = await studentListFormat(data);
+        for(let i = 0; i < formatedStudents.length; i++) {
+            students.push(formatedStudents[i]);
         }
         students = students;
     }

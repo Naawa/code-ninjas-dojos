@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { goto, invalidate } from "$app/navigation";
 	import { ninjas } from "$lib/stores/ninjas";
-    import csv from "csvtojson";
+	import { studentListFormat } from "$lib/utils/studentListFormat";
+    
     
     export let data;
     let { supabase, session, students, attendance } = data
@@ -72,24 +73,9 @@
 
     async function bulkAdd(file: any) {
         const data = await file.text()
-        const jsonArray = await csv().fromString(data);
-        for(let i = 0; i < jsonArray.length; i++) {
-            let student: string = jsonArray.at(i).Participant.replace(/ .*/,'');
-            let formated: string = "";
-            for(let j = 0; j < student.length; j++) {
-                if(j == 0) {
-                    formated += student.charAt(j).toUpperCase();
-                }
-                else {
-                    formated += student.charAt(j).toLowerCase();
-                }
-            }
-
-            if(jsonArray.at(i).ParticipantLastName) {
-                formated += " " + jsonArray.at(i).ParticipantLastName.charAt(0).toUpperCase() + jsonArray.at(i).ParticipantLastName.charAt(1).toLowerCase() + "."
-            }
-            add(formated)
-            await invalidate('/attendance/display');
+        let formatedStudents = await studentListFormat(data);
+        for(let i = 0; i < formatedStudents.length; i++) {
+            add(formatedStudents[i]);
         }
     }
 
@@ -118,7 +104,7 @@
         </div>
     </div>
     <div>
-        <h4>Scheduled</h4>
+        <h4>{scheduled.length} Scheduled</h4>
         <div>
             {#each scheduled as attendee}
                 <span>
