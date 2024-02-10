@@ -79,7 +79,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(12px, 1.5dvw, 56px);
+    font-size: clamp(12px, 1dvw, 56px);
 
     &:hover {
         background-color: white;
@@ -90,7 +90,7 @@ input, label {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
-    font-size: clamp(12px, 1.5dvw, 56px);
+    font-size: clamp(12px, 1dvw, 56px);
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
