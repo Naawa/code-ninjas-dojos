@@ -3,6 +3,8 @@
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
+	import { invalidate, invalidateAll } from "$app/navigation";
+	import { onMount } from "svelte";
     export let data;
     const { attendance, supabase } = data;
 
@@ -82,6 +84,8 @@
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
     }
+    getNinjas(attendance.hourly.at(3).scheduled);   
+
 
     const attendanceUpdates = supabase
     .channel('schema-db-changes')
@@ -92,7 +96,7 @@
         schema: 'public',
       },
       (payload) => {
-            getNinjas(attendance.hourly.at(hour - 1).scheduled);   
+            getNinjas(payload.new.hourly.at(3).scheduled);  
         }
     )
     .subscribe()
@@ -148,7 +152,5 @@
     {:else if hour >= 4}
         <Timer startTime={tHour04}></Timer>
     {/if}
-    {#if hour < 5}
-        <NinjaInfo></NinjaInfo>
-    {/if}
+    <NinjaInfo></NinjaInfo>
 </section>
