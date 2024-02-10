@@ -93,7 +93,6 @@
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
     }
-    getNinjas(attendance.hourly.at(3).scheduled);   
 
 
     const attendanceUpdates = supabase
