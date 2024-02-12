@@ -92,6 +92,9 @@
         if(hour <= 4) {
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
+        else {
+            getNinjas(attendance.hourly.at(1).scheduled);
+        }
     }
 
 

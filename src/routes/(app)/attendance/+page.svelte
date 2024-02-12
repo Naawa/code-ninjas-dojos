@@ -42,7 +42,7 @@
 <section>
     <h3>Display</h3>
     <div>
-        <a href="/attendance/display" target="_blank">
+        <a href="/display" target="_blank">
             <div>
                 <h4>Current Hour</h4>
                 <p>Open</p>

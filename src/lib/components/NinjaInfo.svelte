@@ -21,6 +21,7 @@
         width: fit-content;
         position: relative;
         overflow: scroll;
+        background-color: transparent;
     
         div {
             display: flex;

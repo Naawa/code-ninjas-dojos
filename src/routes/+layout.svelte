@@ -1,15 +1,14 @@
-<!-- src/routes/+layout.svelte -->
 <script lang="ts">
-    import "$lib/scss/styles.scss"
-    import { invalidate } from '$app/navigation'
-    import { onMount } from 'svelte'
-	  import SideNavigation from "$lib/components/SideNavigation.svelte";
-    import BottomNavigation from "$lib/components/BottomNavigation.svelte";
+	import { invalidate } from '$app/navigation';
+	import { onMount } from 'svelte';
+  import "$lib/scss/styles.scss"
+
+
     export let data
-  
+    
     let { supabase, session } = data
     $: ({ supabase, session } = data)
-  
+
     onMount(() => {
       const {
         data: { subscription },
@@ -21,44 +20,6 @@
   
       return () => subscription.unsubscribe()
     });
-  </script>
-  
- {#if session}
-  <div>
-    <SideNavigation></SideNavigation>
-    <span>
-      <slot />
-    </span>
-    <BottomNavigation></BottomNavigation>
-  </div>
-  {:else}
-  <div>
-    <span>
-      <slot />
-    </span>
-  </div>
- {/if}
+</script>
 
-
- <style lang="scss">
-    div {
-      display: flex;
-      padding: 2em;
-      height: 100dvh;
-      gap: 2em;
-
-      span {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    @media (width < 800px) {
-        div {
-            flex-direction: column;
-            span {
-              height: 80dvh;
-            }
-        }
-    }
- </style>
+<slot />
