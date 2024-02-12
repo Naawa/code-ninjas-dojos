@@ -150,10 +150,10 @@
 </style>
 
 <section style="{$theme.bdrop};">
-    <img class="bigFocus" src="{$theme.bigFocus}" alt="Big focus.">
-    <img class="v1" src="{$theme.v1}" alt="Big focus.">
-    <img class="v2" src="{$theme.v2}" alt="Big focus.">
-    <img class="v3" src="{$theme.v3}" alt="Big focus.">
+    <img class="bigFocus" src="{$theme.bigFocus}" alt="Illustration.">
+    <img class="v1" src="{$theme.v1}" alt="Illustration.">
+    <img class="v2" src="{$theme.v2}" alt="Illustration.">
+    <img class="v3" src="{$theme.v3}" alt="Illustration.">
     {#if hour == 1}
         <Timer startTime={first}></Timer>
     {:else if hour == 2}

@@ -72,9 +72,10 @@
         margin: 0;
         min-width: fit-content;
         width: 90dvw;
-        max-width: 500px;
+        max-width: 600px;
         height: 20dvh;
         border-radius: 1em;
+        padding: 2em;
 
         h3 {
             z-index: 0;
