@@ -32,11 +32,7 @@
         </div>
     <span>
         <a href="/students/add" class="div">
-            <div>
-                <span></span>
-                <span></span>
-            </div>
-            <h4>Add</h4>
+            <h4>+ Add</h4>
         </a>
         {#if students.data}
             {#each students.data as student} 
@@ -51,14 +47,17 @@
 
 <style lang="scss">
     section {
+       overflow: scroll;
+       
         span {
             display: flex;
-            align-items: center;
+            align-items: normal;
             justify-content: center;
             gap: 2em;
             padding: 2em;
             flex-wrap: wrap;
-            
+            overflow: scroll;
+
             a {
                 border-radius: 0.5em;
                 border: solid 0.1em #d5d5d5;
@@ -71,25 +70,6 @@
                 width: 20em;
                 justify-content: center;
                 text-decoration: none;
-
-                div {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 0.5em;
-
-                    span {
-                        width: 1em;
-                        border: solid 1px #d5d5d5;
-                        padding: 0;
-                        gap: 0;
-                        position: absolute;
-
-                        &:last-of-type {
-                            rotate: 90deg;
-                        }
-                    }
-                }
             }
         }
     }

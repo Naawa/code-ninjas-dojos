@@ -69,13 +69,11 @@
 
 <style lang="scss">
     section {
-        min-height: 100dvh;
         div {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            width: 90dvw;
-            max-width: 80dvw;
+            width: 90%;
             gap: 2em;
 
             div, span {

@@ -143,10 +143,7 @@
             justify-content: center;
             align-items: center;
             gap: 2em;
-            width: fit-content;
-            min-width: 240px;
-            min-height: 48px;
-            max-width: 80dvw;
+            width: 100%;
         }
         div {
             display: flex;
@@ -157,11 +154,7 @@
             gap: 1em;
             border: solid 0.1em #d5d5d5;
             border-radius: 10px;
-            min-width: 20em;
-            width: 80dvw;
-            min-width: 240px;
-            min-height: 48px;
-            max-width: 60dvw;
+            width: 90%;
 
             input {
                 width: 100%;

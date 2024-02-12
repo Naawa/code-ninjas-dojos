@@ -16,6 +16,14 @@ html {
     body {
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
+        background-color: hsl(0, 0%, 98%);
+
+        section {
+            background-color: white;
+            border-radius: 1em;
+            height: 100%;
+            overflow: scroll;
+        }
 
 
         img, picture, video, canvas, svg {
@@ -63,11 +71,11 @@ grammarly-desktop-integration {
 }
 section, form {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     align-items: center;
     gap: 2em;
-    padding: 4em 1em 8em;
+    padding: 4em 1em;
 }
 
 button {
@@ -79,7 +87,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(12px, 1dvw, 56px);
+    font-size: clamp(10px, 1dvw, 56px);
 
     &:hover {
         background-color: white;
@@ -90,7 +98,7 @@ input, label {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
-    font-size: clamp(12px, 1dvw, 56px);
+    font-size: clamp(10px, 1dvw, 56px);
 }
 
 label {
