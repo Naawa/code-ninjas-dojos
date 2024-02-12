@@ -13,3 +13,11 @@
     <button>Log In</button>
   </form>
 </section>
+
+<style lang="scss">
+  section {
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
