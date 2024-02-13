@@ -3,21 +3,21 @@
 	import { studentListFormat } from '$lib/utils/studentListFormat.js';
 
     let files: FileList;
-    let students: string[] = [];
+    let studentList: string[] = [];
 
     export let data;
-    const { supabase, session } = data;
+    const { supabase, session, students } = data;
 
     let name: string;
     let belt: string;
     let points: number;
 
-    async function addStudent() {
+    async function addStudent(name: string) {
         const { data, error } = await supabase
         .from('students')
         .insert([
             { 
-                name: `${name}`,  
+                name,  
                 belt: `${belt}`,  
                 points: `${points}`,  
                 center_admin: `${session?.user.id}`,  
@@ -30,35 +30,33 @@
 
     $: if (files) {
         for (const file of files) {
-            viewStudents(file)
+            viewstudentList(file)
         }
     }
     
-    async function viewStudents(file: any) {
-        students = [];
+    async function viewstudentList(file: any) {
+        studentList = [];
         const data = await file.text()
-        let formatedStudents = await studentListFormat(data);
-        for(let i = 0; i < formatedStudents.length; i++) {
-            students.push(formatedStudents[i]);
+        let formatedstudentList = await studentListFormat(data);
+        for(let i = 0; i < formatedstudentList.length; i++) {
+            studentList.push(formatedstudentList[i]);
         }
-        students = students;
+        studentList = studentList;
     }
 
-    async function addStudents(students: string[]) {
-        for(let i = 0; i < students.length; i++) {
-            const { data, error } = await supabase
-            .from('students')
-            .insert([
-                { 
-                    name: `${students[i]}`,  
-                    belt: "White",  
-                    points: 10,  
-                    center_admin: `${session?.user.id}`,  
-                },
-            ])
-            .select()
-            goto("/students");
+    async function addstudentList(studentList: string[]) {
+        for(let i = 0; i < studentList.length; i++) {
+            let exists = false;
+            for(let j = 0; j < students.length; j++) {
+                if(students[j].name == studentList[i]) {
+                    exists = true;
+                }
+            }
+            if(!exists) {
+                addStudent(studentList[i]);
+            }
         }
+        goto("/students");
     }
 </script>
 
@@ -78,19 +76,19 @@
             <input type="number" bind:value={points} placeholder="10">
         </span>
     </div>
-    <button on:click={addStudent}>Add Student</button>
+    <button on:click={() => addStudent(name)}>Add Student</button>
     <h3>Multiple</h3>
     <label>
         <input type="file" bind:files accept=".csv">
         + CSV
     </label>
-    <h4>{students.length}</h4>
+    <h4>{studentList.length}</h4>
     <div>
-        {#each students as student}
+        {#each studentList as student}
             <h4>{student}</h4>
         {/each}
     </div>
-    <button on:click={() => addStudents(students)}>Add Students</button>
+    <button on:click={() => addstudentList(studentList)}>Add studentList</button>
 </section>
 
 <style lang="scss">

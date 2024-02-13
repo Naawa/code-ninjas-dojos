@@ -6,7 +6,7 @@
 
 <span>
     {#each routes as route}
-        <a class:active={$page.url.pathname == "/" + route} href="/{route}">{getRouteName(route)}</a>
+        <a class:active={$page.url.pathname.startsWith(`/${route}`)}  href="/{route}">{getRouteName(route)}</a>
     {/each}
 </span>
 
@@ -19,7 +19,7 @@
         padding: 1em;
         gap: 2em;
         align-items: center;
-        background: url('../../../background/DashboardBg.png');
+        background-color: white;
         background-size: 100% 100%;
         min-height: fit-content;
         height: 20dvh;
