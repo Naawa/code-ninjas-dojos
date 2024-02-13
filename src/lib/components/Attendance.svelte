@@ -155,6 +155,8 @@
             border: solid 0.1em #d5d5d5;
             border-radius: 10px;
             width: 90%;
+            background-color: white;
+
 
             input {
                 width: 100%;

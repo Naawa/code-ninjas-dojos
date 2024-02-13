@@ -5,6 +5,7 @@
     
     $: bgCol = $theme.bgCol;
     $: textCol = $theme.textCol;
+    
 </script>
 
 <style lang="scss">
@@ -22,6 +23,7 @@
         position: relative;
         overflow: scroll;
         background-color: transparent;
+        background-image: none;
     
         div {
             display: flex;

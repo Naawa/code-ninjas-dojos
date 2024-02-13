@@ -19,7 +19,8 @@ html {
         background-color: hsl(0, 0%, 98%);
 
         section {
-            background-color: white;
+            background: url('../../../background/DashboardBg.png');
+            background-size: 100% 100%;
             border-radius: 1em;
             height: 100%;
             overflow: scroll;
@@ -33,11 +34,9 @@ html {
         
         input, button, textarea, select, label {
             padding: 1em;
-            width: 80dvw;
-            min-width: 240px;
-            min-height: 48px;
-            max-height: 10dvw;
-            max-width: 40dvw;
+            min-width: 16em;
+            width: 60%;
+            height: 5em;
             text-align: center;
         }
         
@@ -66,7 +65,7 @@ grammarly-desktop-integration {
 }
 
 ::placeholder {
-    color: rgb(112, 112, 112);
+    color: rgb(255, 251, 0);
     opacity: 1;
 }
 section, form {

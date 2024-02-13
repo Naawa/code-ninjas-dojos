@@ -15,14 +15,13 @@
 
     let countdown: any;
 
-   $: if(now.getTime() > startTime.getTime()) {
-        countdown = setInterval(() => {
-            now = new Date();
+   $: {
+    countdown = setInterval(() => {
+        now = new Date();
+        if(now.getTime() > startTime.getTime()) {
             distance = endTime.getTime() - now.getTime();
             minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
             seconds = (Math.floor((distance % (1000 * 60)) / 1000));
-            countdown = clearInterval(countdown);
-        }, 1000)
 
         if(minute < 50 && minute > 30) {
             block = "Ninja Training!";
@@ -44,11 +43,13 @@
             block = "Home Time!"
             theme.set(homeTime);
         }
-    } 
-    else {
-        minute = 59;
-        seconds = 59;
-        block = "Class will begin shortly.";
+        else {
+            minute = 59;
+            seconds = 59;
+            block = "Class will begin shortly.";
+        }
+        countdown = clearInterval(countdown);
+    }}, 1000);
     }
     
     $: if(distance <= 0) {

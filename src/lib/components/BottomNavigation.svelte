@@ -19,7 +19,8 @@
         padding: 1em;
         gap: 2em;
         align-items: center;
-        background-color: white;
+        background: url('../../../background/DashboardBg.png');
+        background-size: 100% 100%;
         min-height: fit-content;
         height: 20dvh;
         max-height: 10dvh;

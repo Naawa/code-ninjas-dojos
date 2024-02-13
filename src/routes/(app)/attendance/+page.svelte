@@ -75,6 +75,8 @@
             flex-direction: column;
             width: 90%;
             gap: 2em;
+            background-color: white;
+            border-radius: 1em;
 
             div, span {
                 display: flex;
@@ -92,7 +94,7 @@
             a {
                 display: flex;
                 flex-direction: column;
-                border-radius: 0.5em;
+                border-radius: 1em;
                 border: solid 0.1em #d5d5d5;
                 padding: 1em;
                 gap: 1em;

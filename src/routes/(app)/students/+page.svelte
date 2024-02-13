@@ -48,7 +48,6 @@
 <style lang="scss">
     section {
        overflow: scroll;
-       
         span {
             display: flex;
             align-items: normal;
@@ -70,6 +69,7 @@
                 width: 20em;
                 justify-content: center;
                 text-decoration: none;
+                background-color: white;
             }
         }
     }

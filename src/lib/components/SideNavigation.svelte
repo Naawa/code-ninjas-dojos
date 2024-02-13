@@ -20,7 +20,9 @@
         padding: 1em;
         gap: 2em;
         align-items: center;
-        background-color: white;
+        background: url('../../../background/DashboardBg.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         min-width: 250px;
         width: 25dvw;
         max-width: 25dvw;

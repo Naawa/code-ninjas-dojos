@@ -41,8 +41,8 @@
     let hour: number = 0;
     let update: any;
 
-
     $: update = setInterval(function() {
+        now = new Date().getTime();
         if(now < second.getTime()) {
             if(hour != 1) {
                 hour = 1;
@@ -68,7 +68,6 @@
                 hour = 5;
             }
         }
-        now = new Date().getTime();
         update = clearInterval(update);     
 
     }, 1000)
@@ -89,14 +88,13 @@
     }
 
     $: {
-        if(hour <= 4) {
+        if(hour < 5) {
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
         else {
-            getNinjas(attendance.hourly.at(1).scheduled);
+            getNinjas(attendance.hourly.at(0).scheduled);
         }
     }
-
 
     const attendanceUpdates = supabase
     .channel('schema-db-changes')
@@ -107,7 +105,12 @@
         schema: 'public',
       },
       (payload) => {
-            getNinjas(payload.new.hourly.at(hour - 1).scheduled);  
+            if(hour < 5) {
+                getNinjas(payload.new.hourly.at(hour - 1).scheduled);   
+            }
+            else {
+                getNinjas(payload.new.hourly.at(0).scheduled);
+            }
         }
     )
     .subscribe()
@@ -122,6 +125,7 @@
         flex-direction: column;
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-image: none;
 
         img {
             position: absolute;
