@@ -7,7 +7,7 @@
     let start = new Date()
     
     if(start.getDay() != 6) {
-        start.setHours(18);
+        start.setHours(17);
         start.setMinutes(30);
     }
     else {
