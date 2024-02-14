@@ -64,8 +64,8 @@
             }
         }
         else {
-            if(hour != 5) {
-                hour = 5;
+            if(hour != 0) {
+                hour = 0;
             }
         }
         update = clearInterval(update);     
@@ -88,7 +88,7 @@
     }
 
     $: {
-        if(hour < 5) {
+        if(hour > 0) {
             getNinjas(attendance.hourly.at(hour - 1).scheduled);   
         }
         else {
@@ -105,7 +105,7 @@
         schema: 'public',
       },
       (payload) => {
-            if(hour < 5) {
+            if(hour > 0) {
                 getNinjas(payload.new.hourly.at(hour - 1).scheduled);   
             }
             else {
@@ -114,6 +114,8 @@
         }
     )
     .subscribe()
+    
+    $: console.log(hour)
 </script>
 <style lang="scss">
     section {
@@ -158,13 +160,13 @@
     <img class="v1" src="{$theme.v1}" alt="Illustration.">
     <img class="v2" src="{$theme.v2}" alt="Illustration.">
     <img class="v3" src="{$theme.v3}" alt="Illustration.">
-    {#if hour == 1}
+    {#if hour <= 1}
         <Timer startTime={first}></Timer>
     {:else if hour == 2}
         <Timer startTime={second}></Timer>
     {:else if hour == 3}
         <Timer startTime={third}></Timer>
-    {:else if hour >= 4}
+    {:else if hour == 4}
         <Timer startTime={fourth}></Timer>
     {/if}
     <NinjaInfo></NinjaInfo>

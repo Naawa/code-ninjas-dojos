@@ -5,19 +5,11 @@
     import BottomNavigation from "$lib/components/BottomNavigation.svelte";
     export let data
   
-    let { session, supabase } = data;
-
-    async function getAdmin() {
-      const { data: admin } = await supabase.from('admins').select('*').eq("center_admin", `${session?.user.id}`)
-
-      return admin
-    }
+    let { session, admin } = data;
   </script>
   
   <main>
-    {#await getAdmin() then admin}
-        <h3>{admin?.at(0).center}</h3>
-    {/await}
+    <h3>{admin?.data.center}</h3>
     {#if session}
     <div>
       <SideNavigation></SideNavigation>

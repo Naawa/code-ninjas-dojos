@@ -17,6 +17,7 @@
         align-items: center;
         gap: 1.5dvw;
         min-height: fit-content;
+        height: fit-content;
         max-height: 80dvh;
         width: fit-content;
         position: relative;

@@ -16,40 +16,40 @@
     let countdown: any;
 
    $: {
-    countdown = setInterval(() => {
+        countdown = setInterval(() => {
         now = new Date();
         if(now.getTime() > startTime.getTime()) {
             distance = endTime.getTime() - now.getTime();
             minute = (Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
             seconds = (Math.floor((distance % (1000 * 60)) / 1000));
 
-        if(minute < 50 && minute > 30) {
-            block = "Ninja Training!";
-            theme.set(training);
-        }
-        else if(minute < 30 && minute > 25) {
-            block = "Water Break!"
-            theme.set(waterBreak);
-        }
-        else if(minute < 25 && minute > 10) {
-            block = "Ninja Training!"
-            theme.set(training);
-        }
-        else if(minute < 10 && minute > 0) {
-            block = "Ninja Exploration!"
-            theme.set(exploration);
-        }
-        else if(minute == 0) {
-            block = "Home Time!"
-            theme.set(homeTime);
+            if(minute < 50 && minute > 30) {
+                block = "Ninja Training!";
+                theme.set(training);
+            }
+            else if(minute < 30 && minute > 25) {
+                block = "Water Break!"
+                theme.set(waterBreak);
+            }
+            else if(minute < 25 && minute > 10) {
+                block = "Ninja Training!"
+                theme.set(training);
+            }
+            else if(minute < 10 && minute > 0) {
+                block = "Ninja Exploration!"
+                theme.set(exploration);
+            }
+            else if(minute == 0) {
+                block = "Home Time!"
+                theme.set(homeTime);
+            }
+            countdown = clearInterval(countdown);
         }
         else {
             minute = 59;
             seconds = 59;
             block = "Class will begin shortly.";
-        }
-        countdown = clearInterval(countdown);
-    }}, 1000);
+        }}, 1000);
     }
     
     $: if(distance <= 0) {
