@@ -114,6 +114,8 @@
         }
     )
     .subscribe()
+
+    $: console.log(hour)
 </script>
 <style lang="scss">
     section {

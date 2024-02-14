@@ -5,7 +5,6 @@
     
     $: bgCol = $theme.bgCol;
     $: textCol = $theme.textCol;
-    
 </script>
 
 <style lang="scss">
@@ -68,9 +67,11 @@
 
 <section>
     {#each $ninjas as ninja, index}
-        <div style="background-color: {bgCol};" in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
-            <img src="../../../belts/{ninja.belt}.png" alt="Icon.">
-            <h3 style="color: {textCol};">{ninja.name}</h3>
-        </div>
+        {#if ninja != undefined}
+            <div style="background-color: {bgCol};" in:fly|global={{ y: 25, duration: index*400, delay: 1200 }} out:fly|global={{ y: 25, duration: 400 }}>
+                <img src="../../../belts/{ninja.belt}.png" alt="Icon.">
+                <h3 style="color: {textCol};">{ninja.name}</h3>
+            </div>
+        {/if}
     {/each}
 </section>
