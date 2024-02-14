@@ -138,7 +138,6 @@
 
 <style lang="scss">
     section {
-        height: 100%;
         overflow: scroll;
         span {
             display: flex;

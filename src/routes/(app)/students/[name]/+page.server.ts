@@ -9,10 +9,9 @@ export const load = async ({ params, locals: { supabase, getSession } }) => {
     async function getProfile(name: string) {
         let { data: profile, error } = await supabase
         .from('students')
-        .select("*").eq('name', name).maybeSingle();
-
+        .select("*").eq('name', name).eq('center_admin', `${session?.user.id}`);
         if(profile) {
-            return profile;
+            return profile.at(0);
         }
         throw error
 	}

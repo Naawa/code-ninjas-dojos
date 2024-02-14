@@ -4,7 +4,7 @@
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
     export let data;
-    const { attendance, supabase } = data;
+    const { attendance, supabase, session} = data;
 
     let first = new Date()
     let second = new Date()
@@ -101,8 +101,10 @@
     .on(
       'postgres_changes',
       {
-        event: '*',
+        event: 'UPDATE',
         schema: 'public',
+        table: 'attendance',
+        filter: `center_admin=${session?.user.id}`
       },
       (payload) => {
             if(hour > 0) {
@@ -114,8 +116,6 @@
         }
     )
     .subscribe()
-    
-    $: console.log(hour)
 </script>
 <style lang="scss">
     section {

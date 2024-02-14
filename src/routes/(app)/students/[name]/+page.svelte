@@ -4,7 +4,8 @@
     export let data;
     const { supabase, profile } = data;
 
-    let points: number = profile.points;
+
+    let points: number = profile?.points || 0;
     let amount: number;
 
     function addPoints(amount: number) {
@@ -15,7 +16,7 @@
     }
 
     async function savePoints(points: number) {
-        const { error } = await supabase.from('students').update({ points: `${points}` }).eq('name', `${profile.name}`).select()
+        const { error } = await supabase.from('students').update({ points: `${points}` }).eq('name', `${profile?.name}`).select()
 
         if(error) {
             console.log(error);
@@ -43,7 +44,6 @@
 <style lang="scss">
     section {
         margin: auto;
-        max-width: 70dvw;
         font-size: larger;
         span {
             display: flex;
