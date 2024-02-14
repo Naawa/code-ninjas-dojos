@@ -7,10 +7,11 @@
 
     export let data;
     const { supabase, session, students } = data;
+    console.log(students)
 
     let name: string;
-    let belt: string;
-    let points: number;
+    let belt: string = "White";
+    let points: number = 10;
 
     async function addStudent(name: string) {
         const { data, error } = await supabase
@@ -24,6 +25,7 @@
             },
         ])
         .select()
+        console.log(error)
         goto("/students")
     }
 
@@ -46,15 +48,7 @@
 
     async function addstudentList(studentList: string[]) {
         for(let i = 0; i < studentList.length; i++) {
-            let exists = false;
-            for(let j = 0; j < students.length; j++) {
-                if(students[j].name == studentList[i]) {
-                    exists = true;
-                }
-            }
-            if(!exists) {
-                addStudent(studentList[i]);
-            }
+            addStudent(studentList[i]);
         }
         goto("/students");
     }
@@ -83,12 +77,12 @@
         + CSV
     </label>
     <h4>{studentList.length}</h4>
+    <button on:click={() => addstudentList(studentList)}>Add Students</button>
     <div>
         {#each studentList as student}
             <h4>{student}</h4>
         {/each}
     </div>
-    <button on:click={() => addstudentList(studentList)}>Add studentList</button>
 </section>
 
 <style lang="scss">
