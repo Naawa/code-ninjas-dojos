@@ -2,8 +2,6 @@ html {
     height: 100%;
     width: 100%;
     transition: 0.5s;
-    font-size: clamp(14px, 0.6dvw, 48px);
-
     body {
         width: clamp(250px, 100dvw, 100%);
     }

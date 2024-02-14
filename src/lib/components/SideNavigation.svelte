@@ -5,7 +5,6 @@
 
 
 <span>
-    <h4>Dojo</h4>
     {#each routes as route}
         <a class:active={$page.url.pathname.startsWith(`/${route}`)} href="/{route}">{getRouteName(route)}</a>
     {/each}
@@ -26,10 +25,6 @@
         min-width: 250px;
         width: 25dvw;
         max-width: 25dvw;
-
-        h4 {
-            padding: 1em;
-        }
 
         a {
             text-decoration: none;

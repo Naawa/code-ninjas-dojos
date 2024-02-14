@@ -23,7 +23,9 @@ strong, a, button, h1, h2, h3, h4, h5 {
   color: rgb(42, 62, 70);
 }
 
-html {font-size: 100%;} /* 16px */
+html {    
+  font-size: clamp(8px, 1.618dvw, 1.618dvh);
+}
 
 h1 {font-size: 3.366rem; /* 53.92px */}
 

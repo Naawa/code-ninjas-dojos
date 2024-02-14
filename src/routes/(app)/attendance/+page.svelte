@@ -39,66 +39,68 @@
     const hours: Hour[] = [];
     hours.push({name: "First", time: first}, {name: "Second", time: second}, {name: "Third", time: third}, {name: "Fourth", time: fourth});
 </script>
+
 <section>
     <h3>Display</h3>
-    <div>
+    <span>
         <a href="/display" target="_blank">
             <div>
                 <h4>Current Hour</h4>
                 <p>Open</p>
             </div>
         </a>
-    </div>
+    </span>
     <br>
     <h3>Sessions</h3>
-    {#if hourly}
-        {#each hourly as info, i}
-            <div>
-                <a href="/attendance/hours/{hours[i].name.toLowerCase()}">
-                    <span>
-                        <h5>{hours[i].name} Hour</h5>
-                        <p>Edit Details</p>
-                    </span>
-                    <SessionInfo headCount={info.scheduled.length} start={hours[i].time}></SessionInfo>
-                </a>
-            </div>
-        {/each}
-        
-    {/if}
+    <span>
+        {#if hourly}
+            {#each hourly as info, i}
+            <a href="/attendance/hours/{hours[i].name.toLowerCase()}">
+                <span>
+                    <h5>{hours[i].name} Hour</h5>
+                    <p>Edit Details</p>
+                </span>
+                <SessionInfo headCount={info.scheduled.length} start={hours[i].time}></SessionInfo>
+            </a>
+            {/each}
+        {/if}
+    </span>
+    
 </section>
 
 <style lang="scss">
     section {
-        div {
+       overflow: scroll;
+       display: flex;
+       align-items: center;
+       
+        span {
             display: flex;
-            justify-content: center;
-            flex-direction: column;
-            width: 90%;
-            gap: 2em;
-            background-color: white;
-            border-radius: 1em;
-
-            div, span {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                align-items: center;
-
-                span {
-                    width: fit-content;
-                    gap: 0.5em;
-                }
-            }
-
+            align-items: normal;
+            justify-content: space-between;
+            gap: 1em;
+            flex-wrap: wrap;
+            width: 100%;
+        
             a {
-                display: flex;
-                flex-direction: column;
-                border-radius: 1em;
+                border-radius: 0.5em;
                 border: solid 0.1em #d5d5d5;
-                padding: 1em;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
                 gap: 1em;
+                padding: 1em 2em;
+                height: fit-content;
+                width: 100%;
+                justify-content: center;
                 text-decoration: none;
+                background-color: white;
+
+                div {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                }
             }
         }
     }

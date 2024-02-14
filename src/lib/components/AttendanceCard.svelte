@@ -8,13 +8,14 @@
     
 <span>
     <p>{headCount} Students</p>
-        <span>
-            <strong>{start.toLocaleString([], {hour: 'numeric', minute: '2-digit'})
-            }</strong>
-            <p>-</p>
-            <strong>{end.toLocaleString([], {hour: 'numeric', minute: '2-digit'})
-            }</strong>
-        </span>
+
+    <div>
+        <strong>{start.toLocaleString([], {hour: 'numeric', minute: '2-digit'})
+        }</strong>
+        <p>-</p>
+        <strong>{end.toLocaleString([], {hour: 'numeric', minute: '2-digit'})
+        }</strong>
+    </div>
     
 </span>
 
@@ -25,6 +26,12 @@
         gap: 1em;
         text-decoration: none;
         align-items: center;
+        width: 100%;
+
+        div {
+            display: flex;
+            gap: 1em;
+        }
     }
 </style>
 

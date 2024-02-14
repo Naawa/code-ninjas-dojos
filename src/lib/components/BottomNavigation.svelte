@@ -13,7 +13,7 @@
 <style lang="scss">
     span {
         display: flex;
-        outline-width: 100%;
+        width: 100%;
         flex-direction: row;
         border-radius: 1em;
         padding: 1em;
@@ -21,11 +21,9 @@
         align-items: center;
         background-color: white;
         background-size: 100% 100%;
-        min-height: fit-content;
-        height: 20dvh;
-        max-height: 10dvh;
         overflow: scroll;
-
+        height: 10dvh;
+        
         a {
             text-decoration: none;
             font-size: 1.2em;

@@ -23,6 +23,7 @@ html {
             background-size: 100% 100%;
             border-radius: 1em;
             height: 100%;
+            width: 100%;
             overflow: scroll;
         }
 
@@ -34,10 +35,11 @@ html {
         
         input, button, textarea, select, label {
             padding: 1em;
-            min-width: 16em;
+            min-width: 18em;
             width: 60%;
             min-height: 4em;
             text-align: center;
+            font-size: 1rem;
         }
         
         p, h1, h2, h3, h4, h5, h6 {
@@ -47,6 +49,15 @@ html {
         
         #root, #__next {
             isolation: isolate;
+        }
+    }
+}
+@media (width < 800px) {
+    html {
+        body {
+            section {
+                height: 72dvh;
+            }
         }
     }
 }
@@ -86,8 +97,6 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(10px, 1dvw, 48px);
-
     &:hover {
         background-color: white;
         color: #303030;;
@@ -97,7 +106,6 @@ input, label {
     border: none;
     border-bottom: solid 2px rgb(59, 59, 59);
     background-color: transparent;
-    font-size: clamp(10px, 1dvw, 48px);
 }
 
 label {
