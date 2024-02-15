@@ -11,7 +11,7 @@
 
     let name: string;
     let belt: string = "White";
-    let points: number = 10;
+    let points: number = 10 ;
 
     async function addStudent(name: string) {
         const { data, error } = await supabase

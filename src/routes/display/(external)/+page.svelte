@@ -104,7 +104,7 @@
         event: 'UPDATE',
         schema: 'public',
         table: 'attendance',
-        filter: `center_admin=${session?.user.id}`
+        filter: `center_admin=eq.${session?.user.id}`,
       },
       (payload) => {
             if(hour > 0) {
