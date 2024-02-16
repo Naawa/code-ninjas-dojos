@@ -3,6 +3,8 @@
 	import NinjaInfo from "$lib/components/NinjaInfo.svelte";
 	import { theme } from "$lib/stores/theme";
 	import { ninjas } from "$lib/stores/ninjas";
+	import { invalidate, invalidateAll } from "$app/navigation";
+	import { browser } from "$app/environment";
     export let data;
     const { attendance, supabase, session} = data;
 
@@ -84,6 +86,9 @@
                 students.push(ninja?.at(0));
             }
             ninjas.set(students);
+        }
+        if(browser) {
+            invalidateAll();
         }
     }
 
