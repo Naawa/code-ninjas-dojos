@@ -17,35 +17,36 @@
     if(first.getDay() != 6) {
         first.setHours(15);
         first.setMinutes(30);
-        first.setSeconds(59);
+        first.setSeconds(0);
         second.setHours(16);
         second.setMinutes(30);
-        second.setSeconds(59);
+        second.setSeconds(0);
         third.setHours(17);
         third.setMinutes(30);
-        third.setSeconds(59);
+        third.setSeconds(0);
         fourth.setHours(18);
         fourth.setMinutes(30);
-        fourth.setSeconds(59);
+        fourth.setSeconds(0);
         end.setHours(19);
         end.setMinutes(30);
-        end.setSeconds(59);
+        end.setSeconds(0);
     }
     else {
         first.setHours(10);
         first.setMinutes(0);
-        first.setSeconds(59);
+        first.setSeconds(0);
         second.setHours(11);
         second.setMinutes(0);
-        second.setSeconds(59);
+        second.setSeconds(0);
         third.setHours(12);
         third.setMinutes(0);
-        third.setSeconds(59);
+        third.setSeconds(0);
         fourth.setHours(13);
         fourth.setMinutes(0);
         end.setHours(14);
         end.setMinutes(0);
-        end.setSeconds(59);
+        end.setSeconds(0);
+
     }
 
     let now: number = new Date().getTime();
