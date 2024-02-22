@@ -43,13 +43,15 @@
                 block = "Home Time!"
                 theme.set(homeTime);
             }
-            countdown = clearInterval(countdown);
         }
         else {
             minute = 59;
             seconds = 59;
             block = "Class will begin shortly.";
-        }}, 1000);
+        }
+        countdown = clearInterval(countdown);
+        
+        }, 1000);
     }
     
     $: if(distance <= 0) {
